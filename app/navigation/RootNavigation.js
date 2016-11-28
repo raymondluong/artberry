@@ -2,7 +2,8 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  Image
+  Image,
+  Text
 } from 'react-native';
 import {
   Notifications,
@@ -36,55 +37,41 @@ export default class RootNavigation extends React.Component {
         initialTab="museum">
         <TabNavigationItem
           id="museum"
-          title="Museum Visits"
-          renderIcon={(isSelected) => {
-            if (isSelected) {
-              return <Image source={require('../assets/icons/museum-selected.png')} />;
-            } else {
-              return <Image source={require('../assets/icons/museum-unselected.png')} />;
-            }  
-          }}>
+          renderIcon={isSelected => this._renderIcon('museum', 'Museum Visits', isSelected)}>
           <StackNavigation initialRoute="museum" />
-
         </TabNavigationItem>
+        
         <TabNavigationItem
           id="journey"
-          title="Start Journey"
-          renderIcon={(isSelected) => {
-            if (isSelected) {
-              return <Image source={require('../assets/icons/journey-selected.png')} />;
-            } else {
-              return <Image source={require('../assets/icons/journey-unselected.png')} />;
-            }  
-          }}>
+          renderIcon={isSelected => this._renderIcon('journey', 'Start Journey', isSelected)}>
           <StackNavigation initialRoute="journey" />
         </TabNavigationItem>
 
         <TabNavigationItem
           id="taste"
-          title="Art Taste"
-          renderIcon={(isSelected) => {
-            if (isSelected) {
-              return <Image source={require('../assets/icons/taste-selected.png')} />;
-            } else {
-              return <Image source={require('../assets/icons/taste-unselected.png')} />;
-            }  
-          }}>
+          renderIcon={isSelected => this._renderIcon('taste', 'Art Taste', isSelected)}>
           <StackNavigation initialRoute="taste" />
         </TabNavigationItem>
       </TabNavigation>
     );
   }
 
-  _renderIcon(name, isSelected) {
+  _renderIcon(name, title, isSelected) {
+    let color = isSelected ? Colors.tabIconSelected : Colors.tabIconDefault;
+    let museumIcon = isSelected ? require(`../assets/icons/museum-selected.png`) : require(`../assets/icons/museum-unselected.png`);
+    let journeyIcon = isSelected ? require(`../assets/icons/journey-selected.png`) : require(`../assets/icons/journey-unselected.png`);
+    let tasteIcon = isSelected ? require(`../assets/icons/taste-selected.png`) : require(`../assets/icons/taste-unselected.png`);
+    let icon = name === 'museum' ? museumIcon : name === 'journey' ? journeyIcon : tasteIcon;
+
     return (
-      <FontAwesome
-        name={name}
-        size={32}
-        color={isSelected ? Colors.tabIconSelected : Colors.tabIconDefault}
-      />
+      <View style={styles.tabItemContainer}>
+        <Image source={icon} style={styles.icon} />
+        <Text style={{color}} numberOfLines={1}>
+            {title}
+        </Text>
+      </View>
     );
-  }
+  };
 
   _registerForPushNotifications() {
     // Send our push token over to our backend so we can receive notifications
@@ -110,7 +97,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  selectedTab: {
-    color: Colors.tabIconSelected,
+  tabItemContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
+  icon: {
+    width: 32,
+    height: 32
+  }
 });
