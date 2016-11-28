@@ -50,14 +50,26 @@ export default class RootNavigation extends React.Component {
         <TabNavigationItem
           id="journey"
           title="Start Journey"
-          renderIcon={isSelected => this._renderIcon('book', isSelected)}>
+          renderIcon={(isSelected) => {
+            if (isSelected) {
+              return <Image source={require('../assets/icons/journey-selected.png')} />;
+            } else {
+              return <Image source={require('../assets/icons/journey-unselected.png')} />;
+            }  
+          }}>
           <StackNavigation initialRoute="journey" />
         </TabNavigationItem>
 
         <TabNavigationItem
           id="taste"
           title="Art Taste"
-          renderIcon={isSelected => this._renderIcon('cog', isSelected)}>
+          renderIcon={(isSelected) => {
+            if (isSelected) {
+              return <Image source={require('../assets/icons/taste-selected.png')} />;
+            } else {
+              return <Image source={require('../assets/icons/taste-unselected.png')} />;
+            }  
+          }}>
           <StackNavigation initialRoute="taste" />
         </TabNavigationItem>
       </TabNavigation>
