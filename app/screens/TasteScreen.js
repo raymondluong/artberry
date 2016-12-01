@@ -7,7 +7,7 @@ import {
   ExponentConfigView,
 } from '@exponent/samples';
 
-export default class SettingsScreen extends React.Component {
+export default class TasteScreen extends React.Component {
   static route = {
     navigationBar: {
       title: 'exp.json'
