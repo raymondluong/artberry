@@ -11,10 +11,16 @@ export class MuseumItem extends React.Component {
 
     let details = this.props.museum;
 
+    let imagesMap = {
+      cantor: require(`../assets/images/cantor.jpg`),
+      moma: require(`../assets/images/moma.jpg`),
+      saam: require(`../assets/images/saam.jpg`),
+    }
+
     return (
       <View style={[styles.container, this.props.style]}>
         <View style={styles.imageContainer}>
-          <Image source={require(`../assets/images/cantor.jpg`)} style={styles.image} />
+          <Image source={imagesMap[details.image]} style={styles.image} />
         </View>
         <View style={styles.titleContainer}>
           <Text style={styles.titleText}>

@@ -30,7 +30,8 @@ export default class MuseumScreen extends React.Component {
             museum={{
               name: 'Cantor Arts Center',
               date: 'November 30, 2016',
-              location: 'Stanford, CA'
+              location: 'Stanford, CA',
+              image: 'cantor'
             }}
             style={styles.museumItem}>
           </MuseumItem>
@@ -39,16 +40,18 @@ export default class MuseumScreen extends React.Component {
             museum={{
               name: 'Museum of Modern Art',
               date: 'November 24, 2016',
-              location: 'New York, NY'
+              location: 'New York, NY',
+              image: 'moma'
             }}
             style={styles.museumItem}>
           </MuseumItem>
 
           <MuseumItem 
             museum={{
-              name: 'Seattle Art Museum',
+              name: 'Seattle Asian Art Museum',
               date: 'November 10, 2016',
-              location: 'Seattle, WA'
+              location: 'Seattle, WA',
+              image: 'saam'
             }}
             style={styles.museumItem}>
           </MuseumItem>
