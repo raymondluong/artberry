@@ -15,7 +15,7 @@ import { MonoText } from '../components/StyledText';
 export default class MuseumScreen extends React.Component {
   static route = {
     navigationBar: {
-      visible: false,
+      title: 'Artberry'
     },
   }
 
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     alignItems: 'center',
-    paddingTop: 80
+    paddingTop: 15
   },
   museumItem: {
     width: museumItemWidth,
