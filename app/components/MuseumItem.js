@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   image: {
-    width: 300,
-    height: 200
+    width: 240,
+    height: 160
   },
   titleContainer: {
     marginBottom: 5,
