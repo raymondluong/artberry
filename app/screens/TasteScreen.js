@@ -4,33 +4,50 @@ import {
   StyleSheet,
 } from 'react-native';
 import {
-  ExponentConfigView,
+  ExponentLinksView,
 } from '@exponent/samples';
+import Grid from 'react-native-grid-component';
+
 
 export default class TasteScreen extends React.Component {
   static route = {
     navigationBar: {
-      title: 'exp.json'
+      title: 'Links',
     },
   }
 
+  _renderItem = (data, i) => <ScrollView style={[{backgroundColor: data}, styles.item]} key={i}/>
+
   render() {
     return (
-      <ScrollView
+        <ScrollView
         style={styles.container}
         contentContainerStyle={this.props.route.getContentContainerStyle()}>
 
-        { /* Go ahead and delete ExponentConfigView and replace it with your
-           * content, we just wanted to give you a quick view of your config */ }
-        <ExponentConfigView />
+          <Grid
+            style={styles.list}
+            renderItem={this._renderItem}
+            data={['black', 'black', 'red', 'green', 'blue', 'yellow']}
+            itemsPerRow={2}
+          />        
 
       </ScrollView>
     );
   }
+
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 15,
+  },
+  item: {
+    flex: 1,
+    height: 160,
+    margin: 1
+  },
+  list: {
+    flex: 1
   },
 });
