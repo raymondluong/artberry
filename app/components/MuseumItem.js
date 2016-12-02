@@ -11,16 +11,10 @@ export class MuseumItem extends React.Component {
 
     let details = this.props.museum;
 
-    let imagesMap = {
-      cantor: require(`../assets/images/cantor.jpg`),
-      moma: require(`../assets/images/moma.jpg`),
-      saam: require(`../assets/images/saam.jpg`),
-    }
-
     return (
       <View style={[styles.container, this.props.style]}>
         <View style={styles.imageContainer}>
-          <Image source={imagesMap[details.image]} style={styles.image} />
+          <Image source={details.image} style={styles.image} />
         </View>
         <View style={styles.titleContainer}>
           <Text style={styles.titleText}>
@@ -37,11 +31,12 @@ export class MuseumItem extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
     alignItems: 'center',
     borderBottomWidth: .5,
     borderBottomColor: '#979797',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    paddingBottom: 20,
+    paddingTop: 20
   },
   imageContainer: {
     marginBottom: 20,
