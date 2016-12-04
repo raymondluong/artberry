@@ -13,7 +13,7 @@ import {
 } from '@exponent/samples';
 import Grid from 'react-native-grid-component';
 import GridView from "react-native-easy-grid-view";
-import { MuseumItem } from '../components/MuseumItem'
+import { PlaylistItem } from '../components/PlaylistItem'
 import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
 import Data from '../data/Data';
@@ -28,14 +28,14 @@ export default class TasteScreen extends React.Component {
 
   render() {
 
-    _goToMuseumDetail = (museum) => {
+    _goToPlaylistDetail = (museum) => {
       this.props.navigator.push(Router.getRoute('museumDetail', museum));
     }
 
-    let museumsList = Data.museums.map(function(museum, i) {
+    let playlistList = Data.museums.map(function(museum, i) {
       return (
-        <TouchableOpacity onPress={this._goToMuseumDetail.bind(this, museum)} key={i}>
-          <MuseumItem museum={museum} style={styles.museumItem} />
+        <TouchableOpacity onPress={this._goToPlaylistDetail.bind(this, museum)} key={i}>
+          <PlaylistItem museum={museum} style={styles.playlistItem} />
         </TouchableOpacity>
       );
     });
@@ -46,7 +46,7 @@ export default class TasteScreen extends React.Component {
           style={styles.container}
           contentContainerStyle={styles.contentContainer}>
 
-          {museumsList}
+          {playlistList}
 
         </ScrollView>
       </View>
@@ -57,7 +57,7 @@ export default class TasteScreen extends React.Component {
 
 
 var screenWidth = Dimensions.get('window').width; 
-var museumItemWidth = screenWidth * .4;
+var playlistItemWidth = screenWidth * .45;
 
 const styles = StyleSheet.create({
   container: {
@@ -67,10 +67,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'center',
-    padding: 10,
-    justifyContent: 'space-between'
+    justifyContent: 'center',
+    margin: 15
   },
-  museumItem: {
-    width: museumItemWidth,
+  playlistItem: {
+    width: playlistItemWidth,
   }
 });
