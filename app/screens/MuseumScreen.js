@@ -11,57 +11,49 @@ import {
 
 import { MuseumItem } from '../components/MuseumItem'
 import { MonoText } from '../components/StyledText';
+import Router from '../navigation/Router';
+import Colors from '../constants/Colors';
+import Data from '../data/Data';
 
 export default class MuseumScreen extends React.Component {
   static route = {
     navigationBar: {
-      title: 'Artberry'
+      title: 'Artberry',
+      tintColor: Colors.tintColor
     },
   }
 
   render() {
+
+    _goToMuseumDetail = (museum) => {
+      this.props.navigator.push(Router.getRoute('museumDetail', museum));
+    }
+
+    let museumsList = Data.museums.map(function(museum, i) {
+      return (
+        <TouchableOpacity onPress={this._goToMuseumDetail.bind(this, museum)} key={i}>
+          <MuseumItem museum={museum} style={styles.museumItem} />
+        </TouchableOpacity>
+      );
+    });
+
     return (
       <View style={styles.container}>
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}>
 
-          <MuseumItem 
-            museum={{
-              name: 'Cantor Arts Center',
-              date: 'November 30, 2016',
-              location: 'Stanford, CA',
-              image: 'cantor'
-            }}
-            style={styles.museumItem}>
-          </MuseumItem>
-
-          <MuseumItem 
-            museum={{
-              name: 'Museum of Modern Art',
-              date: 'November 24, 2016',
-              location: 'New York, NY',
-              image: 'moma'
-            }}
-            style={styles.museumItem}>
-          </MuseumItem>
-
-          <MuseumItem 
-            museum={{
-              name: 'Seattle Asian Art Museum',
-              date: 'November 10, 2016',
-              location: 'Seattle, WA',
-              image: 'saam'
-            }}
-            style={styles.museumItem}>
-          </MuseumItem>
+          {museumsList}
 
         </ScrollView>
       </View>
     );
   }
 
+
 }
+
+
 
 var screenWidth = Dimensions.get('window').width; 
 var museumItemWidth = screenWidth * .8;
@@ -71,8 +63,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   contentContainer: {
-    alignItems: 'center',
-    paddingTop: 15
+    alignItems: 'center'
   },
   museumItem: {
     width: museumItemWidth,
