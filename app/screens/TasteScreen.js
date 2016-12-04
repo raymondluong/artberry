@@ -1,12 +1,19 @@
 import React from 'react';
 import {
+  View,
+  Image,
   ScrollView,
   StyleSheet,
+  Text,
+  TouchableOpacity,
+  Dimensions
 } from 'react-native';
 import {
   ExponentLinksView,
 } from '@exponent/samples';
 import Grid from 'react-native-grid-component';
+
+import { MuseumItem } from '../components/MuseumItem'
 
 
 export default class TasteScreen extends React.Component {
@@ -16,22 +23,27 @@ export default class TasteScreen extends React.Component {
     },
   }
 
-  _renderItem = (data, i) => <ScrollView style={[{backgroundColor: data}, styles.item]} key={i}/>
+  _renderItem = (data, i) =>      
+          <MuseumItem 
+            museum={{
+              name: 'Cantor Arts Center',
+              date: 'November 30, 2016',
+              location: 'Stanford, CA',
+              image: data
+            }}
+            style={styles.museumItem}>
+          </MuseumItem>
 
   render() {
     return (
-        <ScrollView
-        style={styles.container}
-        contentContainerStyle={this.props.route.getContentContainerStyle()}>
-
+        <View style={styles.container}>
           <Grid
             style={styles.list}
             renderItem={this._renderItem}
-            data={['black', 'black', 'red', 'green', 'blue', 'yellow']}
+            data={['cantor', 'moma', 'saam']}
             itemsPerRow={2}
           />        
-
-      </ScrollView>
+        </View>
     );
   }
 
@@ -50,4 +62,7 @@ const styles = StyleSheet.create({
   list: {
     flex: 1
   },
+  museumItem: {
+    width: 200
+  }
 });
