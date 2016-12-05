@@ -42,13 +42,13 @@ export default class TasteScreen extends React.Component {
 
     return (
       <View style={styles.container}>
-        <ScrollView
+        <View
           style={styles.container}
           contentContainerStyle={styles.contentContainer}>
 
           {playlistList}
 
-        </ScrollView>
+        </View>
       </View>
     );
   }
@@ -57,18 +57,23 @@ export default class TasteScreen extends React.Component {
 
 
 var screenWidth = Dimensions.get('window').width; 
-var playlistItemWidth = screenWidth * .45;
+var playlistItemWidth = screenWidth * .40;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 0,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+
   },
   contentContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 15
+    padding: 0
   },
   playlistItem: {
     width: playlistItemWidth,
