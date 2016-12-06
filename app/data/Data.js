@@ -118,32 +118,32 @@ let museums = [
 
 let playlists = [
   {
-    name: 'Metropolitan Museum of Art',
-    date: 'December 9, 2016',
-    location: 'New York, NY',
+    name: 'Playlist1',
     image: require(`../assets/images/met.jpg`),
     artwork: metArtwork
   },
   {
-    name: 'Cantor Arts Center',
-    date: 'November 29, 2016',
-    location: 'Stanford, CA',
+    name: 'Playlist2',
     image: require(`../assets/images/cantor.jpg`),
     artwork: metArtwork
   },
   {
-    name: 'Museum of Modern Art',
-    date: 'November 24, 2016',
-    location: 'New York, NY',
+    name: 'Playlist3',
     image: require(`../assets/images/moma.jpg`),
     artwork: metArtwork
   },
   {
-    name: 'Seattle Asian Art Museum',
-    date: 'November 10, 2016',
-    location: 'Seattle, WA',
+    name: 'Playlist4',
     image: require(`../assets/images/saam.jpg`),
     artwork: metArtwork 
+  },
+  {
+    name: 'Playlist5',
+    image: require(`../assets/images/moma.jpg`),
+  },
+  {
+    name: 'Playlist6',
+    image: require(`../assets/images/saam.jpg`),
   }
 ];
 
