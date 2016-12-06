@@ -62,7 +62,7 @@ var playlistItemWidth = screenWidth * .40;
 const styles = StyleSheet.create({
   container: {
     flex: 0,
-    flexDirection: 'row',
+    flexDirection: 'column',
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'space-between',
