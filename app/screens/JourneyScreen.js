@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  ScrollView,
   StyleSheet,
 } from 'react-native';
 import {
@@ -18,7 +17,6 @@ export default class JourneyScreen extends React.Component {
       tintColor: Colors.tintColor
     },
   }
-
   render() {
     return (
       <MapView
@@ -28,8 +26,12 @@ export default class JourneyScreen extends React.Component {
           longitude: 4.881,
           latitudeDelta: 0.0012,
           longitudeDelta: 0.0011,
-        }}
-      />
+        }}>
+        <MapView.Marker
+          coordinate={{latitude: 52.3583, longitude: 4.881}}
+          pinColor={Colors.tintColor}
+        />
+      </MapView>
     );
   }
 
