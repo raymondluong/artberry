@@ -6,25 +6,30 @@ import {
 import {
   ExponentLinksView,
 } from '@exponent/samples';
+import MapView from 'react-native-maps';
+
+import Router from '../navigation/Router';
+import Colors from '../constants/Colors';
 
 export default class JourneyScreen extends React.Component {
   static route = {
     navigationBar: {
-      title: 'Links',
+      title: 'Artberry',
+      tintColor: Colors.tintColor
     },
   }
 
   render() {
     return (
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={this.props.route.getContentContainerStyle()}>
-
-        { /* Go ahead and delete ExponentLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */ }
-        <ExponentLinksView />
-
-      </ScrollView>
+      <MapView
+        style={{height: 600, margin: 0}}
+        initialRegion={{
+          latitude: 52.3583,
+          longitude: 4.881,
+          latitudeDelta: 0.0012,
+          longitudeDelta: 0.0011,
+        }}
+      />
     );
   }
 
