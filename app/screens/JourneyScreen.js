@@ -22,7 +22,14 @@ const onButtonPress = () => {
 export default class JourneyScreen extends React.Component {
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {
+      region: {
+        latitude: 52.3583,
+        longitude: 4.881,
+        latitudeDelta: 0.0012,
+        longitudeDelta: 0.0011,
+      },
+    };
   }
 
   static route = {
@@ -32,9 +39,9 @@ export default class JourneyScreen extends React.Component {
     },
   }
 
-  handleButtonPress() {
+  startTrackingButtonPressed() {
       console.log('I was pressed')
-    }
+  }
 
 
   render() {
@@ -42,12 +49,8 @@ export default class JourneyScreen extends React.Component {
       <View>
         <MapView
           style={{height: 600, margin: 0}}
-          initialRegion={{
-            latitude: 52.3583,
-            longitude: 4.881,
-            latitudeDelta: 0.0012,
-            longitudeDelta: 0.0011,
-          }}>
+          region={this.state.region}
+        >
 
           <MapView.Marker
             coordinate={{latitude: 52.3583, longitude: 4.881}}
@@ -62,7 +65,7 @@ export default class JourneyScreen extends React.Component {
                           states={{
                             default: {
                               text: 'Start Tracking',
-                              onPress: this.handleButtonPress,
+                              onPress: this.startTrackingButtonPressed,
                               backgroundColor: Colors.redBerry
                             }
                           }} />
