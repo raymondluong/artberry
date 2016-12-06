@@ -28,14 +28,14 @@ export default class TasteScreen extends React.Component {
 
   render() {
 
-    _goToPlaylistDetail = (museum) => {
-      this.props.navigator.push(Router.getRoute('museumDetail', museum));
+    _goToPlaylistDetail = (playlist) => {
+      this.props.navigator.push(Router.getRoute('playlist', playlist));
     }
 
-    let playlistList = Data.museums.map(function(museum, i) {
+    let playlistList = Data.playlists.map(function(playlist, i) {
       return (
-        <TouchableOpacity onPress={this._goToPlaylistDetail.bind(this, museum)} key={i}>
-          <PlaylistItem museum={museum} style={styles.playlistItem} />
+        <TouchableOpacity onPress={this._goToPlaylistDetail.bind(this, playlist)} key={i}>
+          <PlaylistItem playlist={playlist} style={styles.playlistItem} />
         </TouchableOpacity>
       );
     });
