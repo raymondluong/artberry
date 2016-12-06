@@ -11,6 +11,7 @@ import {
   SegmentedControlIOS
 } from 'react-native';
 
+import { ListItem } from '../components/ListItem';
 import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
@@ -38,15 +39,15 @@ export default class MuseumDetailScreen extends React.Component {
 
     let artGrid = this.state.data.map(function(art, i) {
       return (
-        <TouchableOpacity onPress={this._goToArtDetail.bind(this, art)} key={i} style={styles.text}>
-          <Image source={art.image} style={styles.image} />
+        <TouchableOpacity onPress={this._goToArtDetail.bind(this, art)} key={i}>
+          <ListItem item={art} />
         </TouchableOpacity>
       );
     });
 
     let sortImages = (value) => {
       var sortedArtwork;
-      if (value.includes('Time')) {
+      if (value.includes('View')) {
         sortedArtwork = details.artwork.sort((a, b) => b.time - a.time);
       } else {
         sortedArtwork = details.artwork.sort((a, b) => a.name.localeCompare(b.name));
@@ -78,7 +79,7 @@ export default class MuseumDetailScreen extends React.Component {
 
           <View style={styles.buttons}>
             <SegmentedControlIOS 
-              values={['By Time Viewed', 'By Name']}
+              values={['By Viewing Duration', 'By Name']}
               selectedIndex={0}
               tintColor={Colors.tintColor}
               onValueChange = {sortImages} />
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     alignItems: 'center',
-    paddingTop: 15
+    paddingTop: 15,
   },
   titleContainer: {
     alignItems: 'center',
@@ -118,17 +119,8 @@ const styles = StyleSheet.create({
     width: Layout.window.width * .93,
     marginBottom: 15,
   },
-  image: {
-    height: 115,
-    width: 115,
-    margin: 2
-  },
-  tint: {
-    color: Colors.tintColor
-  },
   gridContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'flex-start',
-  }
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
 });
