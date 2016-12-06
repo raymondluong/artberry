@@ -116,6 +116,38 @@ let museums = [
   }
 ];
 
+let playlists = [
+  {
+    name: 'Playlist1',
+    image: require(`../assets/images/met.jpg`),
+    artwork: metArtwork
+  },
+  {
+    name: 'Playlist2',
+    image: require(`../assets/images/cantor.jpg`),
+    artwork: metArtwork
+  },
+  {
+    name: 'Playlist3',
+    image: require(`../assets/images/moma.jpg`),
+    artwork: metArtwork
+  },
+  {
+    name: 'Playlist4',
+    image: require(`../assets/images/saam.jpg`),
+    artwork: metArtwork 
+  },
+  {
+    name: 'Playlist5',
+    image: require(`../assets/images/moma.jpg`),
+  },
+  {
+    name: 'Playlist6',
+    image: require(`../assets/images/saam.jpg`),
+  }
+];
+
 export default {
-  museums: museums
+  museums: museums,
+  playlists: playlists
 };

@@ -11,8 +11,6 @@ import {
 import {
   ExponentLinksView,
 } from '@exponent/samples';
-import Grid from 'react-native-grid-component';
-import GridView from "react-native-easy-grid-view";
 import { PlaylistItem } from '../components/PlaylistItem'
 import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
@@ -28,14 +26,14 @@ export default class TasteScreen extends React.Component {
 
   render() {
 
-    _goToPlaylistDetail = (museum) => {
-      this.props.navigator.push(Router.getRoute('museumDetail', museum));
+    _goToPlaylistDetail = (playlist) => {
+      this.props.navigator.push(Router.getRoute('playlist', playlist));
     }
 
-    let playlistList = Data.museums.map(function(museum, i) {
+    let playlistList = Data.playlists.map(function(playlist, i) {
       return (
-        <TouchableOpacity onPress={this._goToPlaylistDetail.bind(this, museum)} key={i}>
-          <PlaylistItem museum={museum} style={styles.playlistItem} />
+        <TouchableOpacity onPress={this._goToPlaylistDetail.bind(this, playlist)} key={i}>
+          <PlaylistItem playlist={playlist} style={styles.playlistItem} />
         </TouchableOpacity>
       );
     });
@@ -62,7 +60,7 @@ var playlistItemWidth = screenWidth * .40;
 const styles = StyleSheet.create({
   container: {
     flex: 0,
-    flexDirection: 'row',
+    flexDirection: 'column',
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'space-between',
