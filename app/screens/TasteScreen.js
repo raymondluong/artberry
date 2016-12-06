@@ -13,7 +13,7 @@ import {
 } from '@exponent/samples';
 import Grid from 'react-native-grid-component';
 import GridView from "react-native-easy-grid-view";
-import { PlaylistItem } from '../components/PlaylistItem'
+//import { PlaylistItem } from '../components/PlaylistItem'
 import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
 import Data from '../data/Data';
