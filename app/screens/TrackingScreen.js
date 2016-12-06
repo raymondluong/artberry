@@ -44,8 +44,9 @@ const styles = StyleSheet.create({
     flex: 1
   },
   mapStyle: {
-    width: screenWidth,
-    height: screenHeight * 1.5,
-    top: -250
+    width: screenWidth * 1.5,
+    height: screenHeight * 1.7,
+    top: -300,
+    right: 150
   }
 });
