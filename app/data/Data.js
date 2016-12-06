@@ -85,55 +85,6 @@ let metArtwork = [
   },
 ];
 
-let museums = [
-  {
-    name: 'Van Gogh Museum',
-    date: 'December 9, 2016',
-    location: 'Amsterdam, Netherlands',
-    image: require(`../assets/images/vanGogh.jpg`),
-    artwork: vanGoghArtwork 
-  },
-  {
-    name: 'Metropolitan Museum of Art',
-    date: 'December 9, 2016',
-    location: 'New York, NY',
-    image: require(`../assets/images/met.jpg`),
-    artwork: metArtwork
-  },
-  {
-    name: 'Cantor Arts Center',
-    date: 'November 29, 2016',
-    location: 'Stanford, CA',
-    image: require(`../assets/images/cantor.jpg`),
-    artwork: metArtwork
-  },
-  {
-    name: 'Museum of Modern Art',
-    date: 'November 24, 2016',
-    location: 'New York, NY',
-    image: require(`../assets/images/moma.jpg`),
-    artwork: metArtwork
-  },
-  {
-    name: 'Seattle Asian Art Museum',
-    date: 'November 10, 2016',
-    location: 'Seattle, WA',
-    image: require(`../assets/images/saam.jpg`),
-    artwork: metArtwork 
-  }
-];
-
-
-let newmuseum = [
-  {
-    name: 'Van Gogh Museum',
-    date: 'December 9, 2016',
-    location: 'Amsterdam, Netherlands',
-    image: require(`../assets/images/vanGogh.jpg`),
-    artwork: vanGoghArtwork 
-  }
-];
-
 let vanGoghArtwork = [
   {
     name: 'Almond Blossoms',
@@ -218,6 +169,55 @@ let vanGoghArtwork = [
     time: 0,
     description: 'Van Gogh’s paintings of sunflowers are among his most famous. He did them in Arles, in the south of France, in 1888 and 1889. Vincent painted a total of five large canvases with sunflowers in a vase, with three shades of yellow ‘and nothing else’. In this way, he demonstrated that it was possible to create an image with numerous variations of a single colour, without any loss of eloquence.',
     image: require('../assets/images/vanGoghMuseum/sunflowers.jpg')
+  }
+];
+
+let museums = [
+  {
+    name: 'Van Gogh Museum',
+    date: 'December 9, 2016',
+    location: 'Amsterdam, Netherlands',
+    image: require(`../assets/images/vanGogh.jpg`),
+    artwork: vanGoghArtwork 
+  },
+  {
+    name: 'Metropolitan Museum of Art',
+    date: 'December 9, 2016',
+    location: 'New York, NY',
+    image: require(`../assets/images/met.jpg`),
+    artwork: metArtwork
+  },
+  {
+    name: 'Cantor Arts Center',
+    date: 'November 29, 2016',
+    location: 'Stanford, CA',
+    image: require(`../assets/images/cantor.jpg`),
+    artwork: metArtwork
+  },
+  {
+    name: 'Museum of Modern Art',
+    date: 'November 24, 2016',
+    location: 'New York, NY',
+    image: require(`../assets/images/moma.jpg`),
+    artwork: metArtwork
+  },
+  {
+    name: 'Seattle Asian Art Museum',
+    date: 'November 10, 2016',
+    location: 'Seattle, WA',
+    image: require(`../assets/images/saam.jpg`),
+    artwork: metArtwork 
+  }
+];
+
+
+let newmuseum = [
+  {
+    name: 'Van Gogh Museum',
+    date: 'December 9, 2016',
+    location: 'Amsterdam, Netherlands',
+    image: require(`../assets/images/vanGogh.jpg`),
+    artwork: vanGoghArtwork 
   }
 ];
 
