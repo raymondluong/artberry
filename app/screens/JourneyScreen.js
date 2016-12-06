@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
-  Alert,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -20,8 +19,8 @@ const onButtonPress = () => {
 };
 
 export default class JourneyScreen extends React.Component {
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state = {
       region: {
         latitude: 52.3583,
@@ -30,6 +29,7 @@ export default class JourneyScreen extends React.Component {
         longitudeDelta: 0.0011,
       },
     };
+    this.startTrackingButtonPressed = this.startTrackingButtonPressed.bind(this)
   }
 
   static route = {
@@ -39,12 +39,15 @@ export default class JourneyScreen extends React.Component {
     },
   }
 
+  
+
   startTrackingButtonPressed() {
-      console.log('I was pressed')
+      this.props.navigator.push(Router.getRoute('tracking'))
   }
 
 
   render() {
+
     return (
       <View>
         <MapView
