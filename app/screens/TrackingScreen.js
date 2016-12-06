@@ -24,6 +24,10 @@ export default class MuseumScreen extends React.Component {
 
     return (
       <View>
+        <Image
+          source={require('../assets/images/vgmap.jpg')}
+          style={styles.mapStyle}
+        />
 
       </View>
     );
@@ -32,9 +36,16 @@ export default class MuseumScreen extends React.Component {
 
 }
 
+var screenWidth = Dimensions.get('window').width; 
+var screenHeight = Dimensions.get('window').height; 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  mapStyle: {
+    width: screenWidth,
+    height: screenHeight * 1.5,
+    top: -250
   }
 });
