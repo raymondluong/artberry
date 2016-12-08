@@ -9,7 +9,7 @@ import {
   Dimensions
 } from 'react-native';
 
-import { MuseumItem } from '../components/MuseumItem'
+import { MuseumItem } from '../components/MuseumItem';
 import { MonoText } from '../components/StyledText';
 import Router from '../navigation/Router';
 import Colors from '../constants/Colors';

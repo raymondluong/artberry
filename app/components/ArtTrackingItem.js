@@ -8,6 +8,8 @@ import {
 
 import Modal from 'react-native-simple-modal';
 
+console.log(this.props);
+
 export class ArtTrackingItem extends React.Component {
 render() {
 

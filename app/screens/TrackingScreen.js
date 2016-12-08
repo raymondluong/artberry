@@ -8,17 +8,21 @@ import {
   Dimensions
 } from 'react-native';
 import Modal from 'react-native-simple-modal';
+import * as Animatable from 'react-native-animatable';
 
-import { ArtTrackingItem } from '../components/ArtTrackingItem'
+import { ArtTrackingItem } from '../components/ArtTrackingItem';
 import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
 import Data from '../data/Data';
+
+
 
 export default class MuseumScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      open: false
+      open: false,
+      curArt: -1
     }
   }
 
@@ -31,8 +35,7 @@ export default class MuseumScreen extends React.Component {
 
   render() {
     
-
-    let museumsList = Data.museums.map(function(museum, i) {
+    let artworkList = Data.museums.map(function(museum, i) {
       return (
         <TouchableOpacity onPress={this._goToMuseumDetail.bind(this, museum)} key={i}>
           <ArtTrackingItem museum={museum} style={styles.museumItem} />
@@ -40,7 +43,20 @@ export default class MuseumScreen extends React.Component {
       );
     });
 
+    let artLocations = Data.vanGoghArtwork.map(function(artwork, i) {
+      return (
+        <TouchableOpacity style={{position: 'absolute', top: artwork.top, left: artwork.left}} key={i}>
+          <Image
+            source={require('../assets/images/arthere.png')}
+            style={styles.artHereStyle}
+          />
+        </TouchableOpacity>
+
+      );
+    });
+
     return (
+
 
       <View>
 
@@ -49,56 +65,7 @@ export default class MuseumScreen extends React.Component {
           style={styles.mapStyle}
         />
 
-        
-
-        <TouchableOpacity style={styles.almond} onPress={() => {this.setState({open: true})}}>
-          <Image
-            source={require('../assets/images/arthere.png')}
-            style={styles.artHereStyle}
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.bedroom} onPress={() => {this.setState({open: true})}}>
-          <Image
-            source={require('../assets/images/arthere.png')}
-            style={styles.artHereStyle}
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.flowering} onPress={() => {this.setState({open: true})}}>
-          <Image
-            source={require('../assets/images/arthere.png')}
-            style={styles.artHereStyle}
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.irises} onPress={() => {this.setState({open: true})}}>
-          <Image
-            source={require('../assets/images/arthere.png')}
-            style={styles.artHereStyle}
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.langlois} onPress={() => {this.setState({open: true})}}>
-          <Image
-            source={require('../assets/images/arthere.png')}
-            style={styles.artHereStyle}
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.potato} onPress={() => {this.setState({open: true})}}>
-          <Image
-            source={require('../assets/images/arthere.png')}
-            style={styles.artHereStyle}
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.sunflowers} onPress={() => {this.setState({open: true})}}>
-          <Image
-            source={require('../assets/images/arthere.png')}
-            style={styles.artHereStyle}
-          />
-        </TouchableOpacity>
+        {artLocations}
 
 
         <Modal
@@ -106,8 +73,12 @@ export default class MuseumScreen extends React.Component {
           open={this.state.open}
           modalDidClose={() => this.setState({open: false})}
         >
-          {museumsList}
+          {artworkList}
         </Modal>
+
+        <Animatable.View ref="infoScreen" animation = "slideOutUp" style={styles.infoScreen}>
+          <Text>Hello world</Text>
+        </Animatable.View>
 
       </View>
     );
@@ -130,40 +101,10 @@ const styles = StyleSheet.create({
     top: -300,
     right: 150,
   },
-  almond: {
-    position: 'absolute',
-    top: 55,
-    left: 52
-  },
-  bedroom: {
-    position: 'absolute',
-    top: 53,
-    left: 200
-  },
-  flowering: {
-    position: 'absolute',
-    top: 51,
-    left: 290
-  },
-  irises: {
+  infoScreen: {
     position: 'absolute',
     top: 250,
     left: 330
-  },
-  langlois: {
-    position: 'absolute',
-    top: 280,
-    left: 190
-  },
-  potato: {
-    position: 'absolute',
-    top: 120,
-    left: 52
-  },
-  sunflowers: {
-    position: 'absolute',
-    top: 230,
-    left: 45
   },
   artHereStyle: {
     width: 20,
