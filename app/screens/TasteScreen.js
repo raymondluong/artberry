@@ -9,7 +9,7 @@ import {
 import {
   ExponentLinksView,
 } from '@exponent/samples';
-import { PlaylistItem } from '../components/PlaylistItem'
+import { PlaylistItem } from '../components/PlaylistItem';
 import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
 import Data from '../data/Data';

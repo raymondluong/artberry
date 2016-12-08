@@ -118,36 +118,44 @@ let museums = [
 
 let playlists = [
   {
-    name: 'Playlist1',
-    image: require(`../assets/images/met.jpg`),
-    artwork: metArtwork
+    name: 'Favorite Artworks',
+    image: require(`../assets/images/playlists/artwork.png`),
+    headers: false,
   },
   {
-    name: 'Playlist2',
-    image: require(`../assets/images/cantor.jpg`),
-    artwork: metArtwork
+    name: 'Favorite Artists',
+    image: require(`../assets/images/playlists/artist.png`),
+    headers: true,
+    property: 'artist'
   },
   {
-    name: 'Playlist3',
-    image: require(`../assets/images/moma.jpg`),
-    artwork: metArtwork
+    name: 'Favorite Countries',
+    image: require(`../assets/images/playlists/country.png`),
+    headers: true,
+    property: 'country'
   },
   {
-    name: 'Playlist4',
-    image: require(`../assets/images/saam.jpg`),
-    artwork: metArtwork 
+    name: 'Favorite Eras',
+    image: require(`../assets/images/playlists/era.png`),
+    headers: true,
+    property: 'era'
   },
   {
-    name: 'Playlist5',
-    image: require(`../assets/images/moma.jpg`),
+    name: 'Favorite Styles',
+    image: require(`../assets/images/playlists/style.png`),
+    headers: true,
+    property: 'style'
   },
   {
-    name: 'Playlist6',
-    image: require(`../assets/images/saam.jpg`),
-  }
+    name: 'Favorite Media',
+    image: require(`../assets/images/playlists/medium.png`),
+    headers: true,
+    property: 'medium'
+  },  
 ];
 
 export default {
   museums: museums,
-  playlists: playlists
+  playlists: playlists,
+  metArtwork: metArtwork
 };

@@ -7,30 +7,12 @@ import {
 } from 'react-native';
 
 import { Entypo } from '@exponent/vector-icons';
+import Helpers from '../constants/Helpers';
 
 export class ListItem extends React.Component {
   render() {
 
     let details = this.props.item;
-
-    function secToMin(sec) {
-      var minutes = Math.floor(sec / 60);
-      var seconds = sec % 60;
-      var minutesString = `${minutes} minutes`;
-      if (minutes < 1) {
-        minutesString = '';
-      }
-      var secondsString = `${seconds} seconds`;
-      if (seconds === 0) {
-        secondsString = '';
-      } else if (seconds === 1) {
-        secondsString = `${seconds} second`;
-      }
-      if (minutesString && secondsString) {
-        return `${minutesString} and ${secondsString}`;
-      }
-      return minutesString + secondsString;
-    }
 
     return (
       <View style={[styles.container, this.props.style]}>
@@ -42,7 +24,7 @@ export class ListItem extends React.Component {
             </Text>
           </View>
           <Text style={styles.subtitle}>
-            {secToMin(details.time)}
+            {Helpers.secToDisplay(details.time)}
           </Text>
         </View>
         <View style={styles.arrowContainer}>
@@ -72,10 +54,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   title: {
-    fontSize: 16
+    fontSize: 18
   },
   subtitle: {
-    fontSize: 12
+    fontSize: 14
   },
   arrowContainer: {
     width: 20,

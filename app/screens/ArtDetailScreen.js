@@ -11,6 +11,7 @@ import {
 
 import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
+import Helpers from '../constants/Helpers';
 
 export default class MuseumDetailScreen extends React.Component {
   static route = {
@@ -24,25 +25,6 @@ export default class MuseumDetailScreen extends React.Component {
 
   render() {
     let details = this.props.route.params;
-
-    function secToMin(sec) {
-      var minutes = Math.floor(sec / 60);
-      var seconds = sec % 60;
-      var minutesString = `${minutes} minutes`;
-      if (minutes < 1) {
-        minutesString = '';
-      }
-      var secondsString = `${seconds} seconds`;
-      if (seconds === 0) {
-        secondsString = '';
-      } else if (seconds === 1) {
-        secondsString = `${seconds} second`;
-      }
-      if (minutesString && secondsString) {
-        return `${minutesString} and ${secondsString}`;
-      }
-      return minutesString + secondsString;
-    }
 
     return (
       <View style={styles.container}>
@@ -67,8 +49,8 @@ export default class MuseumDetailScreen extends React.Component {
               <Text style={styles.detail}>{details.year}</Text>
             </View>
             <View style={styles.row}>
-              <Text style={styles.label}>Time Viewed</Text>
-              <Text style={styles.detail}>{secToMin(details.time)}</Text>
+              <Text style={styles.label}>Viewing Duration</Text>
+              <Text style={styles.detail}>{Helpers.secToDisplay(details.time)}</Text>
             </View>
 
             <View style={styles.spacer} />
@@ -118,7 +100,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 10,
     fontWeight: 'bold',
-    color: Colors.tintColor
+    color: Colors.tintColor,
+    fontSize: 18
   },
   grid: {
     padding: 20,
@@ -130,11 +113,12 @@ const styles = StyleSheet.create({
   label: {
     flex: 1,
     color: '#9B9B9B',
-    fontSize: 10,
+    fontSize: 12,
     fontWeight: 'bold'
   },
   detail: {
     flex: 3,
+    fontSize: 14
   },
   spacer: {
     padding: 15,
