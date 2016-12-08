@@ -147,8 +147,8 @@ const styles = StyleSheet.create({
   },
   irises: {
     position: 'absolute',
-    top: 320,
-    left: 320
+    top: 250,
+    left: 330
   },
   langlois: {
     position: 'absolute',
@@ -162,8 +162,8 @@ const styles = StyleSheet.create({
   },
   sunflowers: {
     position: 'absolute',
-    top: 370,
-    left: 115
+    top: 230,
+    left: 45
   },
   artHereStyle: {
     width: 20,
