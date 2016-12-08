@@ -22,7 +22,7 @@ export default class MuseumScreen extends React.Component {
     super(props);
     this.state = {
       open: false,
-      curArt: -1
+      curArt: null
     };
   }
 
@@ -37,9 +37,9 @@ export default class MuseumScreen extends React.Component {
 
   render() {
 
-    _showArtwork = () => {
+    _showArtwork = (artwork) => {
         this.setState({ open: true });
-        console.log("hi");
+        this.setState({ curArt: artwork});
     }
     
     
@@ -53,7 +53,7 @@ export default class MuseumScreen extends React.Component {
 
     let artLocations = Data.vanGoghArtwork.map(function(artwork, i) {
       return (
-        <TouchableOpacity onPress={this._showArtwork}
+        <TouchableOpacity onPress={this._showArtwork.bind(this, artwork)}
           style={{position: 'absolute', top: artwork.top, left: artwork.left}} 
           key={i}>
           <Image
