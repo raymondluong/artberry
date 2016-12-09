@@ -85,7 +85,115 @@ let metArtwork = [
   },
 ];
 
+let vanGoghArtwork = [
+  {
+    name: 'Almond Blossoms',
+    artist: 'Vincent van Gogh',
+    year: 1890,
+    era: 'Modern France',
+    country: 'France',
+    medium: 'Oil on canvas',
+    style: 'Post-impressionism',
+    time: 0,
+    description: 'Almond Blossoms is from a group of several paintings made in 1888 and 1890 by Vincent van Gogh in Arles and Saint-Rémy, southern France of blossoming almond trees. Flowering trees were special to van Gogh. They represented awakening and hope. He enjoyed them aesthetically and found joy in painting flowering trees. The works reflect the influence of Impressionism, Divisionism, and Japanese woodcuts. Almond Blossom was made to celebrate the birth of his nephew and namesake, son of his brother Theo and sister-in-law Jo.',
+    image: require('../assets/images/vanGoghMuseum/almond.jpg'),
+    top: 55,
+    left: 52
+  },
+  {
+    name: 'Bedroom in Arles',
+    artist: 'Vincent van Gogh',
+    year: 1888,
+    era: 'Modern France',
+    country: 'France',
+    medium: 'Oil on canvas',
+    style: 'Post-impressionism',
+    time: 0,
+    description: 'The painting depicts van Gogh\'s bedroom at 2, Place Lamartine in Arles, Bouches-du-Rhône, France, known as the Yellow House. The door to the right opened on to the upper floor and the staircase; the door to the left was that of the guest room he held prepared for Gauguin; the window in the front wall looked on to Place Lamartine and its public gardens. This room was not rectangular but trapezoid with an obtuse angle in the left hand corner of the front wall and an acute angle at the right.',
+    image: require('../assets/images/vanGoghMuseum/bedroom.jpg'),
+    top: 53,
+    left: 200
+  },
+  {
+    name: 'Flowering Plum Tree (after Hiroshige)',
+    artist: 'Vincent van Gogh',
+    year: 1887,
+    era: 'Modern France',
+    country: 'France',
+    medium: 'Oil on canvas',
+    style: 'Post-impressionism, Japonaiserie',
+    time: 0,
+    description: 'Van Gogh was a great admirer of Japanese art, which made him happy and cheerful. He wrote to his brother Theo: ‘Just think of that; isn’t it almost a new religion that these Japanese teach us, who are so simple and live in nature as if they themselves were flowers?’ (letter 686) He produced three paintings after Japanese prints from his own collection, to explore the printmakers’ style and use of colour.',
+    image: require('../assets/images/vanGoghMuseum/flowering.jpg'),
+    top: 51,
+    left: 290
+  },
+  {
+    name: 'Irises',
+    artist: 'Vincent van Gogh',
+    year: 1890,
+    era: 'Modern France',
+    country: 'France',
+    medium: 'Oil on canvas',
+    style: 'Post-impressionism',
+    time: 0,
+    description: 'Van Gogh painted this still life in the psychiatric hospital at Saint-Rémy. He viewed Irises primarily as a colour study, and he painted the luxuriant bouquet twice. He set out in this version to achieve a powerful colour contrast, while in the other still life he pursued the opposite – a soft, pastel effect. The flowers are placed against a uniformly yellow background, making them stand out even more strongly. The irises were originally purple, but the red pigment has since faded, turning them blue.',
+    image: require('../assets/images/vanGoghMuseum/irises.jpg'),
+    top: 250,
+    left: 330
+  },
+  {
+    name: 'The Langlois Bridge',
+    artist: 'Vincent van Gogh',
+    year: 1888,
+    era: 'Modern France',
+    country: 'France',
+    medium: 'Oil on canvas',
+    style: 'Post-impressionism',
+    time: 0,
+    description: 'Van Gogh was influenced by Japanese woodcut prints, as evidenced by his simplified use of color to create a harmonious and unified image. Contrasting colors, such as blue and yellow, were used to bring a vibrancy to the works. He painted with an impasto, or thickly applied paint, using color to depict the reflection of light. The subject matter, a drawbridge on a canal, reminded him of his homeland in the Netherlands. He asked his brother Theo to frame and send one of the paintings to an art dealer in the Netherlands. The reconstructed Langlois Bridge is now named Pont Van-Gogh.',
+    image: require('../assets/images/vanGoghMuseum/langlois.jpg'),
+    top: 280,
+    left: 190
+  },
+  {
+    name: 'The Potato Eaters',
+    artist: 'Vincent van Gogh',
+    year: 1885,
+    era: 'Modern France',
+    country: 'France',
+    medium: 'Oil on canvas',
+    style: 'Post-impressionism',
+    time: 0,
+    description: 'Van Gogh saw the Potato Eaters as a showpiece, for which he deliberately chose a difficult composition to prove he was on his way to becoming a good figure painter. The painting had to depict the harsh reality of country life, so he gave the peasants coarse faces and bony, working hands. He wanted to show in this way that they ‘have tilled the earth themselves with these hands they are putting in the dish ... that they have thus honestly earned their food’.',
+    image: require('../assets/images/vanGoghMuseum/potato.jpg'),
+    top: 120,
+    left: 52
+  },
+  {
+    name: 'Sunflowers',
+    artist: 'Vincent van Gogh',
+    year: 1889,
+    era: 'Modern France',
+    country: 'France',
+    medium: 'Oil on canvas',
+    style: 'Post-impressionism',
+    time: 0,
+    description: 'Van Gogh’s paintings of sunflowers are among his most famous. He did them in Arles, in the south of France, in 1888 and 1889. Vincent painted a total of five large canvases with sunflowers in a vase, with three shades of yellow ‘and nothing else’. In this way, he demonstrated that it was possible to create an image with numerous variations of a single colour, without any loss of eloquence.',
+    image: require('../assets/images/vanGoghMuseum/sunflowers.jpg'),
+    top: 230,
+    left: 45
+  }
+];
+
 let museums = [
+  {
+    name: 'Van Gogh Museum',
+    date: 'December 9, 2016',
+    location: 'Amsterdam, Netherlands',
+    image: require(`../assets/images/vanGogh.jpg`),
+    artwork: vanGoghArtwork 
+  },
   {
     name: 'Metropolitan Museum of Art',
     date: 'December 9, 2016',
@@ -157,5 +265,5 @@ let playlists = [
 export default {
   museums: museums,
   playlists: playlists,
-  metArtwork: metArtwork
+  vanGoghArtwork: vanGoghArtwork
 };
