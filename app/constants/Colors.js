@@ -1,8 +1,8 @@
 const tintColor = '#752775';
 const redBerry = '#D993CE';
-const blueBerry = 'A289E7';
-const yellowBerry = 'FFD68C';
-const orangeBerry = 'FFA846';
+const blueBerry = '#A289E7';
+const yellowBerry = '#FFD68C';
+const orangeBerry = '#FFA846';
 
 export default {
   tintColor,

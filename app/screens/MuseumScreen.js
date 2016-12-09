@@ -29,13 +29,7 @@ export default class MuseumScreen extends React.Component {
       this.props.navigator.push(Router.getRoute('museumDetail', museum));
     }
 
-    let museumsList = Data.museums.map(function(museum, i) {
-      return (
-        <TouchableOpacity onPress={this._goToMuseumDetail.bind(this, museum)} key={i}>
-          <MuseumItem museum={museum} style={styles.museumItem} />
-        </TouchableOpacity>
-      );
-    });
+    let museumsList = ent
 
     return (
       <View style={styles.container}>

@@ -7,7 +7,6 @@ import {
   View,
   Dimensions
 } from 'react-native';
-import Modal from 'react-native-simple-modal';
 import * as Animatable from 'react-native-animatable';
 
 import { ArtTrackingItem } from '../components/ArtTrackingItem';
@@ -38,7 +37,6 @@ export default class MuseumScreen extends React.Component {
   render() {
 
     _showArtwork = (artwork) => {
-        this.setState({ open: true });
         this.setState({ curArt: artwork});
     }
     
@@ -76,20 +74,10 @@ export default class MuseumScreen extends React.Component {
         />
 
         {artLocations}
+        
 
 
-        <Modal
-          offset={500}
-          open={this.state.open}
-          modalDidClose={() => this.setState({open: false})}
-        >
-          {artworkList}
-        </Modal>
-
-        <Animatable.View ref="infoScreen" animation = "slideOutUp" style={styles.infoScreen}>
-          <Text>Hello world</Text>
-        </Animatable.View>
-
+          
       </View>
     );
   }
@@ -99,7 +87,6 @@ export default class MuseumScreen extends React.Component {
 
 var screenWidth = Dimensions.get('window').width; 
 var screenHeight = Dimensions.get('window').height;
-var museumItemWidth = screenWidth * .8;
 
 const styles = StyleSheet.create({
   container: {
@@ -113,14 +100,15 @@ const styles = StyleSheet.create({
   },
   infoScreen: {
     position: 'absolute',
-    top: 250,
-    left: 330
+    top: screenHeight - 250,
+    left: 0,
+    height: 5,
+    width: screenWidth,
+    backgroundColor: 'white',
+    padding: 50
   },
   artHereStyle: {
     width: 20,
     height: 20
-  },
-  museumItem: {
-    width: museumItemWidth,
   }
 });
