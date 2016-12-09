@@ -51,6 +51,15 @@ export default class MuseumScreen extends React.Component {
       );
     });
 
+    let createCurArtModal = (artwork) => {
+      return (
+        <View>
+          <ArtTrackingItem artwork={artwork} />
+        </View>
+      )
+    }
+    
+
     let artLocations = Data.vanGoghArtwork.map(function(artwork, i) {
       return (
         <TouchableOpacity onPress={this._showArtwork.bind(this, artwork)}
@@ -67,7 +76,6 @@ export default class MuseumScreen extends React.Component {
 
     return (
 
-
       <View>
 
         <Image
@@ -83,12 +91,12 @@ export default class MuseumScreen extends React.Component {
           open={this.state.open}
           modalDidClose={() => this.setState({open: false})}
         >
-          {artworkList}
+          {createCurArtModal(this.state.curArt)}
         </Modal>
 
-        <Animatable.View ref="infoScreen" animation = "slideOutUp" style={styles.infoScreen}>
+        {/*<Animatable.View ref="infoScreen" animation = "slideOutUp" style={styles.infoScreen}>
           <Text>Hello world</Text>
-        </Animatable.View>
+        </Animatable.View>*/}
 
       </View>
     );

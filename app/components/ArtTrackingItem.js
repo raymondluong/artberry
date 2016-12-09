@@ -6,28 +6,14 @@ import {
   Image
 } from 'react-native';
 
-import Modal from 'react-native-simple-modal';
-
-console.log(this.props);
-
 export class ArtTrackingItem extends React.Component {
-render() {
+  render() {
 
-    let details = this.props.museum;
+    let details = this.props.artwork;
 
     return (
       <View style={[styles.container, this.props.style]}>
-        <View style={styles.imageContainer}>
-          <Image source={details.image} style={styles.image} />
-        </View>
-        <View style={styles.titleContainer}>
-          <Text style={styles.titleText}>
-            {details.name}
-          </Text>
-        </View>
-        <Text style={styles.dateText}>
-          {details.date} • {details.location}
-        </Text>
+        <Image source={details.image} style={styles.image} />
       </View>
     );
   }
