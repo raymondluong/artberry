@@ -6,9 +6,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {
-  ExponentLinksView,
-} from '@exponent/samples';
 import { PlaylistItem } from '../components/PlaylistItem';
 import Router from '../navigation/Router';
 import Colors from '../constants/Colors';

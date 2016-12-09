@@ -30,27 +30,13 @@ export default class PlaylistScreen extends React.Component {
   render() {
     let details = this.props.route.params;
 
-    // let allArtwork = Data.museums.reduce((all, museum) => all.concat(museum.artwork), []);
-    let allArtwork = Data.metArtwork;
+    let allArtwork = Data.museums.reduce((all, museum) => all.concat(museum.artwork), []);
 
     _goToArtDetail = (art) => {
       this.props.navigator.push(Router.getRoute('artDetail', art));
     }
 
     let data = Data.metArtwork;
-    let artGrid;
-
-    // create list, parameter is an array of artwork
-    function createFavoritePiecesGrid() {
-      allArtwork = allArtwork.sort((a, b) => b.time - a.time);
-      return allArtwork.map((art, i) => {
-        return (
-          <TouchableOpacity onPress={this._goToArtDetail.bind(this, art)} key={i}>
-            <ListItem item={art} />
-          </TouchableOpacity>
-        );
-      });
-    }
 
     function createArtGrid(artworkArray) {
       let sortedArtwork = artworkArray.sort((a, b) => b.time - a.time);
@@ -65,10 +51,6 @@ export default class PlaylistScreen extends React.Component {
 
     // property should be one of: [artist, era, country, medium, style]
     function createGridWithHeaders(property) {
-      // create hashmap1: artist -> array of artwork O(n)
-      // create hashmap2: artist -> total time duration O(n)
-      // sort keys in hashmap2 by decreasing total duration --> outputs an array (Object.keys())
-      // iterate through sorted keys and create UI
       let propertyToArtworkMap = {};
       let propertyToDurationMap = {};
 
@@ -106,6 +88,7 @@ export default class PlaylistScreen extends React.Component {
             {createArtGrid(propertyToArtworkMap[key])}
           </View>
         );
+
         return (
           <View style={styles.sectionContainer} key={i}>
             <Accordion
@@ -113,29 +96,14 @@ export default class PlaylistScreen extends React.Component {
               content={content}
               easing="easeOutCubic"
               underlayColor="#fff"
+              onPress={() => console.log(this)}
             />
           </View>
         )
       });
     }
 
-    if (details.headers) {
-      artGrid = createGridWithHeaders(details.property); //todo: change this to be dynamic
-    } else {
-      artGrid = createArtGrid(allArtwork);
-    }
-
-    var header = (
-      <View>
-        <Text>Click to Expand</Text>
-      </View>
-    );
- 
-    var content = (
-      <View>
-        <Text>This content is hidden in the accordion</Text>
-      </View>
-    );
+    let artGrid = details.headers ? createGridWithHeaders(details.property) : createArtGrid(allArtwork);
 
     return (
       <ScrollView 
@@ -149,7 +117,6 @@ export default class PlaylistScreen extends React.Component {
       </ScrollView>
     );
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -163,20 +130,19 @@ const styles = StyleSheet.create({
   sectionContainer: {
     borderBottomWidth: .5,
     borderBottomColor: '#979797',
-    paddingBottom: 10,
-    marginBottom: 10,
   },
   gridContainer: {
     paddingLeft: 10,
     paddingRight: 10,
   },
   headerContainer: {
-    marginBottom: 10,
     flexDirection: 'row',
     alignItems: 'center',
+    paddingTop: 10
   },
   headerText: {
     width: 335,
+    marginBottom: 10
   },
   headerTitle: {
     fontSize: 18,
@@ -188,7 +154,4 @@ const styles = StyleSheet.create({
   arrowContainer: {
     width: 20
   },
-  header: {
-    backgroundColor: 'green'
-  }
 });
