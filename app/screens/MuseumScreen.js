@@ -20,7 +20,8 @@ export default class MuseumScreen extends React.Component {
     navigationBar: {
       title: 'Artberry',
       tintColor: Colors.tintColor,
-      renderRight: (route, props) => <ProfileButton />
+      renderRight: (route, props) => <ProfileButton />,
+      titleStyle: {fontFamily: 'Pacifico', fontSize: 20}
     },
   }
 
@@ -72,5 +73,8 @@ const styles = StyleSheet.create({
   },
   museumItem: {
     width: museumItemWidth,
-  }
+  },
+  titleStyle: {
+    fontFamily: 'Pacifico'
+  },
 });
