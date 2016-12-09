@@ -5,65 +5,110 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Dimensions
+  Dimensions,
+  Alert
 } from 'react-native';
 
 import Modal from 'react-native-simple-modal';
-
+import reactMixin from 'react-mixin'
+import TimerMixin from 'react-timer-mixin'
 import ArtTrackingTimer from '../components/ArtTrackingTimer';
+import { TrackingList } from '../components/TrackingList';
 import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
 import Data from '../data/Data';
 import AwesomeButton from 'react-native-awesome-button';
 
 
-export default class TrackingScreen extends React.Component {
+class TrackingScreen extends React.Component {
   static route = {
     navigationBar: {
       title: 'Artberry',
-      tintColor: Colors.tintColor
+      tintColor: Colors.tintColor,
     },
   }
 
   state = {
-    open: false,
-    curArt: null
+    openCurrent: false,
+    currentArt: null,
+    counter: 0,
+    interval: null,
+    viewedArtwork: [],
+    openViewed: false
   }
 
   render() {
 
-    _closeModal = () => {
+    _closeArtModal = () => {
+      this.clearInterval(this.state.interval);
+      if (this.state.viewedArtwork.includes(this.state.currentArt)) {
+        let i = this.state.viewedArtwork.indexOf(this.state.currentArt);
+        this.state.viewedArtwork[i].time += this.state.counter;
+      } else {
+        this.state.currentArt.time = this.state.counter;
+        this.state.viewedArtwork.push(this.state.currentArt);
+      }
       this.setState({
-        open: false
-      })
-    }
-
-    _showArtwork = (artwork) => {
-      this.setState({ 
-        open: true,
-        curArt: artwork
+        openCurrent: false,
+        counter: 0
       });
     }
-    
-    let artworkList = Data.museums.map(function(museum, i) {
-      return (
-        <TouchableOpacity onPress={this._goToMuseumDetail.bind(this, museum)} key={i}>
-          <ArtTrackingTimer museum={museum} style={styles.museumItem} />
-        </TouchableOpacity>
-      );
-    });
 
-    let createCurArtModal = (artwork) => {
-      return (
-        <View>
-          <ArtTrackingTimer artwork={artwork} />
-        </View>
-      );
+    _viewArtwork = (artwork) => {
+      this.state.interval = this.setInterval(() => {
+        this.setState({ counter: this.state.counter + 1 })
+      }, 1000)
+      this.setState({ 
+        openCurrent: true,
+        currentArt: artwork,
+      });
     }
+
+    _pauseJourney = () => {
+      this.setState({
+        openViewed: true
+      });
+    }
+
+    _resumeJourney = () => {
+      this.setState({
+        openViewed: false
+      });
+    }
+
+    _finishJourney = () => {
+      Alert.alert(
+        '',
+        'Are you sure you want to finish your museum journey?',
+        [
+          {text: 'Cancel'},
+          {text: 'OK', onPress: () => {
+            this.props.navigator.popToTop();
+            this.props.navigation.performAction(({ tabs, stacks }) => {
+              tabs('main').jumpToTab('museum');
+              
+              Data.newMuseum.artwork = this.state.viewedArtwork;
+              Data.museums.unshift(Data.newMuseum);
+              Alert.alert(
+                '',
+                `Your visit to the ${Data.newMuseum.name} has been added!`,
+                [
+                  {text: 'OK'}
+                ]
+              )
+            });
+          }},
+        ]
+      )
+    }
+
+    let createArtModalContent = artwork => <ArtTrackingTimer artwork={artwork} />;
+
+    let createViewedModalContent = () => <TrackingList artwork={this.state.viewedArtwork} />;
 
     let artLocations = Data.vanGoghArtwork.map(function(artwork, i) {
       return (
-        <TouchableOpacity onPress={this._showArtwork.bind(this, artwork)}
+        <TouchableOpacity onPress={this._viewArtwork.bind(this, artwork)}
           style={{position: 'absolute', top: artwork.top, left: artwork.left}} 
           key={i}>
           <Image
@@ -85,14 +130,32 @@ export default class TrackingScreen extends React.Component {
 
         {artLocations}
 
+        <Image
+          source={require('../assets/images/currentlocation.png')}
+          style={styles.currentLocation}
+        />
+
+        <View style={styles.pauseJourneyButtonContainer}>
+          <AwesomeButton
+            backgroundStyle = {styles.button}
+            labelStyle = {styles.pauseJourneyButtonLabel}
+            states={{
+              default: {
+                text: `Pause Journey`,
+                onPress: _pauseJourney,
+                backgroundColor: Colors.redBerry
+              }
+            }} />
+        </View>
+
         <View style={styles.finishJourneyButtonContainer}>
           <AwesomeButton
             backgroundStyle = {[styles.button, styles.finishJourneyButton]}
             labelStyle = {styles.finishJourneyButtonLabel}
             states={{
               default: {
-                text: 'Finish Journey',
-                onPress: this.startTrackingButtonPressed,
+                text: `Finish Journey`,
+                onPress: _finishJourney,
                 backgroundColor: Colors.redBerry
               }
             }} />
@@ -100,12 +163,13 @@ export default class TrackingScreen extends React.Component {
 
         <Modal
           offset={500}
-          open={this.state.open}
-          modalDidClose={() => this.setState({open: false})}
-        >
-          {createCurArtModal(this.state.curArt)}
+          open={this.state.openCurrent}
+          modalDidClose={_closeArtModal}>
+
+          {createArtModalContent(this.state.currentArt)}
+
           <View style={styles.modalButtonContainer}>
-            <TouchableOpacity onPress={_closeModal}>
+            <TouchableOpacity onPress={_closeArtModal}>
               <AwesomeButton
                 backgroundStyle = {[styles.button, styles.doneButton]}
                 labelStyle = {styles.doneButtonLabel}
@@ -128,16 +192,38 @@ export default class TrackingScreen extends React.Component {
           </View>
         </Modal>
 
-        {/*<Animatable.View ref="infoScreen" animation = "slideOutUp" style={styles.infoScreen}>
-          <Text>Hello world</Text>
-        </Animatable.View>*/}
+        <Modal
+          offset={500}
+          open={this.state.openViewed}
+          modalDidClose={() => this.setState({openViewed: false})}>
+
+          <Text style={styles.modalTitle}>Journey Paused</Text>
+
+          <View style={styles.resumeButtonContainer}>
+            <AwesomeButton
+              backgroundStyle = {[styles.button]}
+              labelStyle = {styles.resumeJourneyButtonLabel}
+              states={{
+                default: {
+                  text: `Resume Journey`,
+                  onPress: _resumeJourney,
+                  backgroundColor: Colors.redBerry
+                }
+              }} />
+          </View>
+
+          {createViewedModalContent()}
+
+        </Modal>
 
       </View>
     );
   }
-
-
 }
+
+reactMixin(TrackingScreen.prototype, TimerMixin);
+
+export default TrackingScreen;
 
 var screenWidth = Dimensions.get('window').width; 
 var screenHeight = Dimensions.get('window').height;
@@ -162,6 +248,13 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20
   },
+  currentLocation: {
+    position: 'absolute',
+    top: 159,
+    left: 250,
+    width: 35,
+    height: 35
+  },
   museumItem: {
     width: museumItemWidth,
   },
@@ -169,10 +262,18 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     alignItems: 'center'
   },
+  resumeButtonContainer: {
+    marginTop: 15,
+    alignItems: 'center'
+  },
+  modalTitle: {
+    fontSize: 20,
+    textAlign: 'center'
+  },
   button: {
     justifyContent: 'center',
-    height: 30,
-    width: 200,
+    height: 25,
+    width: 180,
     borderRadius: 20,
     marginBottom: 10
   },
@@ -193,7 +294,7 @@ const styles = StyleSheet.create({
   },
   finishJourneyButtonContainer: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 0,
     width: screenWidth,
     alignItems: 'center'
   },
@@ -202,6 +303,20 @@ const styles = StyleSheet.create({
   },
   finishJourneyButtonLabel: {
     color: '#fff',
-    fontSize: 18
+    fontSize: 14
+  },
+  resumeJourneyButtonLabel: {
+    color: '#fff',
+    fontSize: 14
+  },
+  pauseJourneyButtonContainer: {
+    position: 'absolute',
+    bottom: 35,
+    width: screenWidth,
+    alignItems: 'center'
+  },
+  pauseJourneyButtonLabel: {
+    color: '#fff',
+    fontSize: 14
   }
 });

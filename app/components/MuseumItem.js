@@ -21,7 +21,7 @@ export class MuseumItem extends React.Component {
             {details.name}
           </Text>
         </View>
-        <Text style={styles.dateText}>
+        <Text style={styles.subtitleText}>
           {details.date} • {details.location}
         </Text>
       </View>
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20
   },
-  dateText: {
+  subtitleText: {
     fontSize: 15
   }
 });

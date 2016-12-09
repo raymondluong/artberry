@@ -36,8 +36,6 @@ export default class PlaylistScreen extends React.Component {
       this.props.navigator.push(Router.getRoute('artDetail', art));
     }
 
-    let data = Data.metArtwork;
-
     function createArtGrid(artworkArray) {
       let sortedArtwork = artworkArray.sort((a, b) => b.time - a.time);
       return sortedArtwork.map((art, i) => {
@@ -75,7 +73,9 @@ export default class PlaylistScreen extends React.Component {
             <View style={styles.headerText}>
               <Text style={styles.headerTitle}>{key}</Text>
               <Text style={styles.headerSubtitle}>{Helpers.secToDisplay(propertyToDurationMap[key])}</Text>
-              <Text style={styles.headerSubtitle}>{propertyToArtworkMap[key].length} pieces of art viewed</Text>
+              <Text style={styles.headerSubtitle}>
+                {propertyToArtworkMap[key].length} {propertyToArtworkMap[key].length > 1 ? 'pieces' : 'piece'} of art viewed
+              </Text>
             </View>
             <View style={styles.arrowContainer}>
               <Entypo name="chevron-thin-down" color="gray" size={18}/>

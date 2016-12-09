@@ -63,7 +63,7 @@ export default class JourneyScreen extends React.Component {
             labelStyle = {styles.startTrackingButtonLabel}
             states={{
               default: {
-                text: 'Start Tracking',
+                text: 'Start Journey',
                 onPress: this.startTrackingButtonPressed,
                 backgroundColor: Colors.redBerry
               }
@@ -83,12 +83,12 @@ const styles = StyleSheet.create({
   },
   startTrackingButtonBackground : {
     justifyContent: 'center',
-    height: 30,
-    width: 200,
+    height: 25,
+    width: 180,
     borderRadius: 20
   },
   startTrackingButtonLabel : {
     color: 'white',
-    fontSize: 18
+    fontSize: 14
   }
 });

@@ -188,15 +188,8 @@ let vanGoghArtwork = [
 
 let museums = [
   {
-    name: 'Van Gogh Museum',
-    date: 'December 9, 2016',
-    location: 'Amsterdam, Netherlands',
-    image: require(`../assets/images/vanGogh.jpg`),
-    artwork: vanGoghArtwork 
-  },
-  {
     name: 'Metropolitan Museum of Art',
-    date: 'December 9, 2016',
+    date: 'December 3, 2016',
     location: 'New York, NY',
     image: require(`../assets/images/met.jpg`),
     artwork: metArtwork
@@ -206,21 +199,21 @@ let museums = [
     date: 'November 29, 2016',
     location: 'Stanford, CA',
     image: require(`../assets/images/cantor.jpg`),
-    artwork: metArtwork
+    artwork: []
   },
   {
     name: 'Museum of Modern Art',
     date: 'November 24, 2016',
     location: 'New York, NY',
     image: require(`../assets/images/moma.jpg`),
-    artwork: metArtwork
+    artwork: []
   },
   {
     name: 'Seattle Asian Art Museum',
     date: 'November 10, 2016',
     location: 'Seattle, WA',
     image: require(`../assets/images/saam.jpg`),
-    artwork: metArtwork 
+    artwork: []
   }
 ];
 
@@ -262,8 +255,16 @@ let playlists = [
   },  
 ];
 
+let newMuseum = {
+  name: 'Van Gogh Museum',
+  date: 'December 9, 2016',
+  location: 'Amsterdam, NL',
+  image: require(`../assets/images/vanGogh.jpg`),
+};
+
 export default {
   museums: museums,
+  newMuseum: newMuseum,
   playlists: playlists,
   vanGoghArtwork: vanGoghArtwork
 };
