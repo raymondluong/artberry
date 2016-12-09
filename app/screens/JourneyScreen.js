@@ -1,30 +1,76 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
-  ScrollView,
   StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
-import {
-  ExponentLinksView,
-} from '@exponent/samples';
+
+import MapView from 'react-native-maps';
+import AwesomeButton from 'react-native-awesome-button';
+
+import Router from '../navigation/Router';
+import Colors from '../constants/Colors';
+
+const onButtonPress = () => {
+  Alert.alert("Button has been pressed!");
+};
 
 export default class JourneyScreen extends React.Component {
-  static route = {
-    navigationBar: {
-      title: 'Links',
-    },
+  constructor(){
+    super();
+    this.state = {
+      region: {
+        latitude: 52.3583,
+        longitude: 4.881,
+        latitudeDelta: 0.0012,
+        longitudeDelta: 0.0011,
+      },
+    };
+    this.startTrackingButtonPressed = this.startTrackingButtonPressed.bind(this)
   }
 
+  static route = {
+    navigationBar: {
+      title: 'Artberry',
+      tintColor: Colors.tintColor
+    },
+  }  
+
+  startTrackingButtonPressed() {
+      this.props.navigator.push(Router.getRoute('tracking'))
+  }
+
+
   render() {
+
     return (
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={this.props.route.getContentContainerStyle()}>
+      <View>
+        <MapView
+          style={{height: 600, margin: 0}}
+          region={this.state.region}
+        >
 
-        { /* Go ahead and delete ExponentLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */ }
-        <ExponentLinksView />
+        <MapView.Marker
+          coordinate={{latitude: 52.3583, longitude: 4.881}}
+          pinColor={Colors.tintColor}
+        />
 
-      </ScrollView>
+        </MapView>
+        <View style={styles.container}>
+          <AwesomeButton
+            backgroundStyle = {styles.startTrackingButtonBackground}
+            labelStyle = {styles.startTrackingButtonLabel}
+            states={{
+              default: {
+                text: 'Start Tracking',
+                onPress: this.startTrackingButtonPressed,
+                backgroundColor: Colors.redBerry
+              }
+            }} />
+        </View>
+      </View>
+      
     );
   }
 
@@ -32,7 +78,17 @@ export default class JourneyScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: 15,
+    top: -125,
+    alignItems: 'center'
   },
+  startTrackingButtonBackground : {
+    justifyContent: 'center',
+    height: 30,
+    width: 200,
+    borderRadius: 20
+  },
+  startTrackingButtonLabel : {
+    color: 'white',
+    fontSize: 18
+  }
 });
