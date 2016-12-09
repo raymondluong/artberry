@@ -21,6 +21,7 @@
     "react-native-awesome-button": "^1.6.0",
     "react-native-easy-grid-view": "^0.1.1",
     "react-native-sliding-up-panel": "^1.1.11"
+    "react-native-accordion": "^1.0.1"
   },
   "devDependencies": {
     "jest-exponent": "~0.1.3"

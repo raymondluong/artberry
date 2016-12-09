@@ -9,8 +9,8 @@ import {
   Dimensions
 } from 'react-native';
 
-import { MuseumItem } from '../components/MuseumItem';
-import { MonoText } from '../components/StyledText';
+import { MuseumItem } from '../components/MuseumItem'
+import { ProfileButton } from '../components/ProfileButton';
 import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
 import Data from '../data/Data';
@@ -19,7 +19,8 @@ export default class MuseumScreen extends React.Component {
   static route = {
     navigationBar: {
       title: 'Artberry',
-      tintColor: Colors.tintColor
+      tintColor: Colors.tintColor,
+      renderRight: (route, props) => <ProfileButton />
     },
   }
 

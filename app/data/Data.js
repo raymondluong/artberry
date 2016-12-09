@@ -224,6 +224,7 @@ let museums = [
   }
 ];
 
+<<<<<<< HEAD
 
 let newmuseum = [
   {
@@ -233,9 +234,48 @@ let newmuseum = [
     image: require(`../assets/images/vanGogh.jpg`),
     artwork: vanGoghArtwork 
   }
+=======
+let playlists = [
+  {
+    name: 'Favorite Artworks',
+    image: require(`../assets/images/playlists/artwork.png`),
+    headers: false,
+  },
+  {
+    name: 'Favorite Artists',
+    image: require(`../assets/images/playlists/artist.png`),
+    headers: true,
+    property: 'artist'
+  },
+  {
+    name: 'Favorite Countries',
+    image: require(`../assets/images/playlists/country.png`),
+    headers: true,
+    property: 'country'
+  },
+  {
+    name: 'Favorite Eras',
+    image: require(`../assets/images/playlists/era.png`),
+    headers: true,
+    property: 'era'
+  },
+  {
+    name: 'Favorite Styles',
+    image: require(`../assets/images/playlists/style.png`),
+    headers: true,
+    property: 'style'
+  },
+  {
+    name: 'Favorite Media',
+    image: require(`../assets/images/playlists/medium.png`),
+    headers: true,
+    property: 'medium'
+  },  
 ];
 
 export default {
   museums: museums,
   vanGoghArtwork: vanGoghArtwork
+  playlists: playlists,
+  metArtwork: metArtwork
 };
