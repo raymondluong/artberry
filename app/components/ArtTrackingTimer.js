@@ -8,8 +8,12 @@ import {
 
 import reactMixin from 'react-mixin'
 import TimerMixin from 'react-timer-mixin'
+import Helpers from '../constants/Helpers';
+import Colors from '../constants/Colors';
+import { FontAwesome } from '@exponent/vector-icons';
+import AwesomeButton from 'react-native-awesome-button';
 
-class ArtTrackingItem extends React.Component {
+class ArtTrackingTimer extends React.Component {
   constructor(props, context) {
     super(props, context)
 
@@ -37,25 +41,25 @@ class ArtTrackingItem extends React.Component {
         <View style={styles.textContainer}>
           <Text style={styles.titleText}>{details.name}</Text>
           <Text style={styles.subtitleText}>{details.artist}</Text>
-          <Text>{this.state.counter}</Text>
+          <Text style={styles.timerText}>
+            <FontAwesome name="clock-o" size={15}/>
+             {'  ' + Helpers.secToDisplay(this.state.counter)}
+          </Text>
         </View>
       </View>
     );
   }
 }
 
-reactMixin(ArtTrackingItem.prototype, TimerMixin);
+reactMixin(ArtTrackingTimer.prototype, TimerMixin);
 
-export default ArtTrackingItem;
+export default ArtTrackingTimer;
 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    borderBottomWidth: .5,
-    borderBottomColor: '#979797',
-    backgroundColor: '#fff',
-    paddingBottom: 20,
-    paddingTop: 20
+    paddingTop: 10,
+    paddingBottom: 10
   },
   imageContainer: {
     marginTop: 20,
@@ -74,6 +78,12 @@ const styles = StyleSheet.create({
   },
   subtitleText: {
     fontSize: 15
-  }
+  },
+  clockIcon: {
+    marginRight: 2
+  },
+  timerText: {
+    marginTop: 10
+  },
 });
 

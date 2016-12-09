@@ -35,9 +35,7 @@ export default class JourneyScreen extends React.Component {
       title: 'Artberry',
       tintColor: Colors.tintColor
     },
-  }
-
-  
+  }  
 
   startTrackingButtonPressed() {
       this.props.navigator.push(Router.getRoute('tracking'))
@@ -53,23 +51,23 @@ export default class JourneyScreen extends React.Component {
           region={this.state.region}
         >
 
-          <MapView.Marker
-            coordinate={{latitude: 52.3583, longitude: 4.881}}
-            pinColor={Colors.tintColor}
-          />
+        <MapView.Marker
+          coordinate={{latitude: 52.3583, longitude: 4.881}}
+          pinColor={Colors.tintColor}
+        />
 
         </MapView>
         <View style={styles.container}>
           <AwesomeButton
-                          backgroundStyle = {styles.startTrackingButtonBackground}
-                          labelStyle = {styles.startTrackingButtonLabel}
-                          states={{
-                            default: {
-                              text: 'Start Tracking',
-                              onPress: this.startTrackingButtonPressed,
-                              backgroundColor: Colors.redBerry
-                            }
-                          }} />
+            backgroundStyle = {styles.startTrackingButtonBackground}
+            labelStyle = {styles.startTrackingButtonLabel}
+            states={{
+              default: {
+                text: 'Start Tracking',
+                onPress: this.startTrackingButtonPressed,
+                backgroundColor: Colors.redBerry
+              }
+            }} />
         </View>
       </View>
       
@@ -85,12 +83,12 @@ const styles = StyleSheet.create({
   },
   startTrackingButtonBackground : {
     justifyContent: 'center',
-    height: 40,
+    height: 30,
     width: 200,
     borderRadius: 20
   },
   startTrackingButtonLabel : {
     color: 'white',
-    fontSize: 20
+    fontSize: 18
   }
 });

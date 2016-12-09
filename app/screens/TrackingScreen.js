@@ -10,11 +10,11 @@ import {
 
 import Modal from 'react-native-simple-modal';
 
-import ArtTrackingItem from '../components/ArtTrackingItem';
+import ArtTrackingTimer from '../components/ArtTrackingTimer';
 import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
 import Data from '../data/Data';
-
+import AwesomeButton from 'react-native-awesome-button';
 
 
 export default class TrackingScreen extends React.Component {
@@ -32,6 +32,12 @@ export default class TrackingScreen extends React.Component {
 
   render() {
 
+    _closeModal = () => {
+      this.setState({
+        open: false
+      })
+    }
+
     _showArtwork = (artwork) => {
       this.setState({ 
         open: true,
@@ -42,7 +48,7 @@ export default class TrackingScreen extends React.Component {
     let artworkList = Data.museums.map(function(museum, i) {
       return (
         <TouchableOpacity onPress={this._goToMuseumDetail.bind(this, museum)} key={i}>
-          <ArtTrackingItem museum={museum} style={styles.museumItem} />
+          <ArtTrackingTimer museum={museum} style={styles.museumItem} />
         </TouchableOpacity>
       );
     });
@@ -50,7 +56,7 @@ export default class TrackingScreen extends React.Component {
     let createCurArtModal = (artwork) => {
       return (
         <View>
-          <ArtTrackingItem artwork={artwork} />
+          <ArtTrackingTimer artwork={artwork} />
         </View>
       );
     }
@@ -79,6 +85,18 @@ export default class TrackingScreen extends React.Component {
 
         {artLocations}
 
+        <View style={styles.finishJourneyButtonContainer}>
+          <AwesomeButton
+            backgroundStyle = {[styles.button, styles.finishJourneyButton]}
+            labelStyle = {styles.finishJourneyButtonLabel}
+            states={{
+              default: {
+                text: 'Finish Journey',
+                onPress: this.startTrackingButtonPressed,
+                backgroundColor: Colors.redBerry
+              }
+            }} />
+        </View>
 
         <Modal
           offset={500}
@@ -86,6 +104,28 @@ export default class TrackingScreen extends React.Component {
           modalDidClose={() => this.setState({open: false})}
         >
           {createCurArtModal(this.state.curArt)}
+          <View style={styles.modalButtonContainer}>
+            <TouchableOpacity onPress={_closeModal}>
+              <AwesomeButton
+                backgroundStyle = {[styles.button, styles.doneButton]}
+                labelStyle = {styles.doneButtonLabel}
+                states={{
+                  default: {
+                    text: 'Done Viewing',
+                    backgroundColor: Colors.blueBerry,
+                  }
+                }} />
+            </TouchableOpacity>
+              <AwesomeButton
+                backgroundStyle = {[styles.button, styles.elseButton]}
+                labelStyle = {styles.elseButtonLabel}
+                states={{
+                  default: {
+                    text: 'I\'m Viewing Something Else',
+                    backgroundColor: 'white'
+                  }
+                }} />
+          </View>
         </Modal>
 
         {/*<Animatable.View ref="infoScreen" animation = "slideOutUp" style={styles.infoScreen}>
@@ -124,5 +164,44 @@ const styles = StyleSheet.create({
   },
   museumItem: {
     width: museumItemWidth,
+  },
+  modalButtonContainer: {
+    paddingTop: 30,
+    alignItems: 'center'
+  },
+  button: {
+    justifyContent: 'center',
+    height: 30,
+    width: 200,
+    borderRadius: 20,
+    marginBottom: 10
+  },
+  doneButton: {
+
+  },
+  doneButtonLabel: {
+    color: 'white',
+    fontSize: 14
+  },
+  elseButton: {
+    borderColor: 'gray',
+    borderWidth: .5,
+  },
+  elseButtonLabel: {
+    color: 'gray',
+    fontSize: 12
+  },
+  finishJourneyButtonContainer: {
+    position: 'absolute',
+    bottom: 20,
+    width: screenWidth,
+    alignItems: 'center'
+  },
+  finishJourneyButton: {
+    
+  },
+  finishJourneyButtonLabel: {
+    color: '#fff',
+    fontSize: 18
   }
 });
