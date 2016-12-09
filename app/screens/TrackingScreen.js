@@ -69,8 +69,10 @@ class TrackingScreen extends React.Component {
         [
           {text: 'Cancel'},
           {text: 'OK', onPress: () => {
+            this.props.navigator.popToTop();
             this.props.navigation.performAction(({ tabs, stacks }) => {
               tabs('main').jumpToTab('museum');
+              
               Data.newMuseum.artwork = this.state.viewedArtwork;
               Data.museums.unshift(Data.newMuseum);
               Alert.alert(
