@@ -5,7 +5,8 @@ function secToDisplay(sec) {
 
   var hoursString = hours > 1 ? `${hours} hours` : hours === 1 ? `${hours} hour` : '';
   var minutesString = minutes > 1 ? `${minutes} minutes` : minutes === 1 ? `${minutes} minute` : '';
-  var secondsString = seconds > 1 ? `${seconds} seconds` : seconds === 1 ? `${seconds} second` : '';
+  // var secondsString = seconds > 1 ? `${seconds} seconds` : seconds === 1 ? `${seconds} second` : '';
+  var secondsString = seconds === 1 ? `${seconds} second` : `${seconds} seconds`;
 
   if (hoursString && minutesString && secondsString) {
     return `${hoursString}, ${minutesString}, and ${secondsString}`;
