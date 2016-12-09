@@ -73,7 +73,7 @@ export default class MuseumDetailScreen extends React.Component {
             </Text>
 
             <Text style={styles.subtitle}>
-              {details.artwork.length} pieces of art viewed
+              {details.artwork.length} {details.artwork.length > 1 ? 'pieces' : 'piece'} of art viewed
             </Text>
           </View>
 

@@ -24,13 +24,17 @@ export default class MuseumScreen extends React.Component {
     },
   }
 
+  state = {
+    museums: Data.museums
+  }
+
   render() {
 
     _goToMuseumDetail = (museum) => {
       this.props.navigator.push(Router.getRoute('museumDetail', museum));
     }
 
-    let museumsList = Data.museums.map(function(museum, i) {
+    let museumsList = this.state.museums.map(function(museum, i) {
       return (
         <TouchableOpacity onPress={this._goToMuseumDetail.bind(this, museum)} key={i}>
           <MuseumItem museum={museum} style={styles.museumItem} />
@@ -57,7 +61,7 @@ export default class MuseumScreen extends React.Component {
 
 
 var screenWidth = Dimensions.get('window').width; 
-var museumItemWidth = screenWidth * .8;
+var museumItemWidth = screenWidth * .85;
 
 const styles = StyleSheet.create({
   container: {

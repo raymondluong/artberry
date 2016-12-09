@@ -5,11 +5,13 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Dimensions
+  Dimensions,
+  Alert
 } from 'react-native';
 
 import Modal from 'react-native-simple-modal';
-
+import reactMixin from 'react-mixin'
+import TimerMixin from 'react-timer-mixin'
 import ArtTrackingTimer from '../components/ArtTrackingTimer';
 import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
@@ -17,53 +19,78 @@ import Data from '../data/Data';
 import AwesomeButton from 'react-native-awesome-button';
 
 
-export default class TrackingScreen extends React.Component {
+class TrackingScreen extends React.Component {
   static route = {
     navigationBar: {
       title: 'Artberry',
-      tintColor: Colors.tintColor
+      tintColor: Colors.tintColor,
     },
   }
 
   state = {
     open: false,
-    curArt: null
+    currentArt: null,
+    counter: 0,
+    interval: null,
+    viewedArtwork: []
   }
 
   render() {
 
     _closeModal = () => {
+      this.clearInterval(this.state.interval);
+      if (this.state.viewedArtwork.includes(this.state.currentArt)) {
+        let i = this.state.viewedArtwork.indexOf(this.state.currentArt);
+        this.state.viewedArtwork[i].time += this.state.counter;
+      } else {
+        this.state.currentArt.time = this.state.counter;
+        this.state.viewedArtwork.push(this.state.currentArt);
+      }
       this.setState({
-        open: false
-      })
-    }
-
-    _showArtwork = (artwork) => {
-      this.setState({ 
-        open: true,
-        curArt: artwork
+        open: false,
+        counter: 0
       });
     }
-    
-    let artworkList = Data.museums.map(function(museum, i) {
-      return (
-        <TouchableOpacity onPress={this._goToMuseumDetail.bind(this, museum)} key={i}>
-          <ArtTrackingTimer museum={museum} style={styles.museumItem} />
-        </TouchableOpacity>
-      );
-    });
 
-    let createCurArtModal = (artwork) => {
-      return (
-        <View>
-          <ArtTrackingTimer artwork={artwork} />
-        </View>
-      );
+    _viewArtwork = (artwork) => {
+      this.state.interval = this.setInterval(() => {
+        this.setState({ counter: this.state.counter + 1 })
+      }, 1000)
+      this.setState({ 
+        open: true,
+        currentArt: artwork,
+      });
     }
+
+    _finishJourney = () => {
+      Alert.alert(
+        '',
+        'Are you sure you want to finish your museum journey?',
+        [
+          {text: 'Cancel'},
+          {text: 'OK', onPress: () => {
+            this.props.navigation.performAction(({ tabs, stacks }) => {
+              tabs('main').jumpToTab('museum');
+              Data.newMuseum.artwork = this.state.viewedArtwork;
+              Data.museums.unshift(Data.newMuseum);
+              Alert.alert(
+                '',
+                `Your visit to the ${Data.newMuseum.name} has been added!`,
+                [
+                  {text: 'OK'}
+                ]
+              )
+            });
+          }},
+        ]
+      )
+    }
+
+    let createArtModal = artwork => <ArtTrackingTimer artwork={artwork} />;
 
     let artLocations = Data.vanGoghArtwork.map(function(artwork, i) {
       return (
-        <TouchableOpacity onPress={this._showArtwork.bind(this, artwork)}
+        <TouchableOpacity onPress={this._viewArtwork.bind(this, artwork)}
           style={{position: 'absolute', top: artwork.top, left: artwork.left}} 
           key={i}>
           <Image
@@ -91,8 +118,8 @@ export default class TrackingScreen extends React.Component {
             labelStyle = {styles.finishJourneyButtonLabel}
             states={{
               default: {
-                text: 'Finish Journey',
-                onPress: this.startTrackingButtonPressed,
+                text: `Finish Journey`,
+                onPress: _finishJourney,
                 backgroundColor: Colors.redBerry
               }
             }} />
@@ -101,9 +128,10 @@ export default class TrackingScreen extends React.Component {
         <Modal
           offset={500}
           open={this.state.open}
-          modalDidClose={() => this.setState({open: false})}
-        >
-          {createCurArtModal(this.state.curArt)}
+          modalDidClose={() => this.setState({open: false})}>
+
+          {createArtModal(this.state.currentArt)}
+
           <View style={styles.modalButtonContainer}>
             <TouchableOpacity onPress={_closeModal}>
               <AwesomeButton
@@ -135,9 +163,11 @@ export default class TrackingScreen extends React.Component {
       </View>
     );
   }
-
-
 }
+
+reactMixin(TrackingScreen.prototype, TimerMixin);
+
+export default TrackingScreen;
 
 var screenWidth = Dimensions.get('window').width; 
 var screenHeight = Dimensions.get('window').height;
