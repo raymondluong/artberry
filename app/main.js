@@ -32,7 +32,7 @@ class AppContainer extends React.Component {
       await cacheAssetsAsync({
         fonts: [
           FontAwesome.font,
-          {'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf')},
+          {'Pacifico': require('./assets/fonts/Pacifico.ttf')},
         ],
       });
     } catch(e) {

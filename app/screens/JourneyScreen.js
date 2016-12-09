@@ -83,12 +83,12 @@ const styles = StyleSheet.create({
   },
   startTrackingButtonBackground : {
     justifyContent: 'center',
-    height: 25,
-    width: 180,
+    height: 40,
+    width: 220,
     borderRadius: 20
   },
   startTrackingButtonLabel : {
     color: 'white',
-    fontSize: 14
+    fontSize: 18
   }
 });

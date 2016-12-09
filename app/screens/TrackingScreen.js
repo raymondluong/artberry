@@ -272,8 +272,8 @@ const styles = StyleSheet.create({
   },
   button: {
     justifyContent: 'center',
-    height: 25,
-    width: 180,
+    height: 40,
+    width: 220,
     borderRadius: 20,
     marginBottom: 10
   },
@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
   },
   doneButtonLabel: {
     color: 'white',
-    fontSize: 14
+    fontSize: 16
   },
   elseButton: {
     borderColor: 'gray',
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
   },
   elseButtonLabel: {
     color: 'gray',
-    fontSize: 12
+    fontSize: 14
   },
   finishJourneyButtonContainer: {
     position: 'absolute',
@@ -303,20 +303,20 @@ const styles = StyleSheet.create({
   },
   finishJourneyButtonLabel: {
     color: '#fff',
-    fontSize: 14
+    fontSize: 18
   },
   resumeJourneyButtonLabel: {
     color: '#fff',
-    fontSize: 14
+    fontSize: 18
   },
   pauseJourneyButtonContainer: {
     position: 'absolute',
-    bottom: 35,
+    bottom: 55,
     width: screenWidth,
     alignItems: 'center'
   },
   pauseJourneyButtonLabel: {
     color: '#fff',
-    fontSize: 14
+    fontSize: 18
   }
 });
