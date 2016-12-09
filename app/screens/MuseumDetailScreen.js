@@ -37,13 +37,20 @@ export default class MuseumDetailScreen extends React.Component {
       this.props.navigator.push(Router.getRoute('artDetail', art));
     }
 
-    let artGrid = this.state.data.map(function(art, i) {
-      return (
-        <TouchableOpacity onPress={this._goToArtDetail.bind(this, art)} key={i}>
-          <ListItem item={art} />
-        </TouchableOpacity>
-      );
-    });
+    let artGrid = () => {
+      if (!this.state.data || this.state.data.length === 0) {
+        return (
+          <View><Text>It looks like you did not track any art on your visit to the {details.name}.</Text></View>
+        )
+      }
+      return this.state.data.map(function(art, i) {
+        return (
+          <TouchableOpacity onPress={this._goToArtDetail.bind(this, art)} key={i}>
+            <ListItem item={art} />
+          </TouchableOpacity>
+        );
+      });
+    }
 
     let sortImages = (value) => {
       var sortedArtwork;
@@ -73,7 +80,7 @@ export default class MuseumDetailScreen extends React.Component {
             </Text>
 
             <Text style={styles.subtitle}>
-              {details.artwork.length} {details.artwork.length > 1 ? 'pieces' : 'piece'} of art viewed
+              {details.artwork.length} {details.artwork.length === 1 ? 'piece' : 'pieces'} of art viewed
             </Text>
           </View>
 
@@ -86,7 +93,7 @@ export default class MuseumDetailScreen extends React.Component {
           </View>
 
           <View style={styles.gridContainer}>
-            {artGrid}
+            {artGrid()}
           </View>
 
         </ScrollView>

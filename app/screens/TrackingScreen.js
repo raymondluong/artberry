@@ -112,6 +112,11 @@ class TrackingScreen extends React.Component {
 
         {artLocations}
 
+        <Image
+          source={require('../assets/images/currentlocation.png')}
+          style={styles.currentLocation}
+        />
+
         <View style={styles.finishJourneyButtonContainer}>
           <AwesomeButton
             backgroundStyle = {[styles.button, styles.finishJourneyButton]}
@@ -191,6 +196,13 @@ const styles = StyleSheet.create({
   artHereStyle: {
     width: 20,
     height: 20
+  },
+  currentLocation: {
+    position: 'absolute',
+    top: 159,
+    left: 250,
+    width: 35,
+    height: 35
   },
   museumItem: {
     width: museumItemWidth,
