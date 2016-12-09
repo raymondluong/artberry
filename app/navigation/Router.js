@@ -8,6 +8,7 @@ import ArtDetailScreen from '../screens/ArtDetailScreen';
 import JourneyScreen from '../screens/JourneyScreen';
 import TasteScreen from '../screens/TasteScreen';
 import PlaylistScreen from '../screens/PlaylistScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 import RootNavigation from './RootNavigation';
 
 export default createRouter(() => ({
@@ -17,5 +18,6 @@ export default createRouter(() => ({
   journey: () => JourneyScreen,
   taste: () => TasteScreen,
   playlist: () => PlaylistScreen,
+  profile: () => ProfileScreen,
   rootNavigation: () => RootNavigation,
 }));
