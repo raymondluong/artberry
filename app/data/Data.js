@@ -314,30 +314,6 @@ let momaArtwork = [
 
 let saamArtwork = [
   {
-    name: 'Head from a Statue of Pharaoh Thutmosis III',
-    artist: '',
-    year: 'Mid-15th Century B.C.',
-    era: 'Ancient Egypt',
-    country: 'Egypt',
-    medium: 'Basalt',
-    style: 'Egyptian',
-    time: 98,
-    description: 'One of the most extraordinary aspects of Egyptian art is the consistent portrayal of the human form. Developed around the year 2900 BC, during the Predynastic period, this style of portraying the human form remained consistent for 3000 years, through the time of the Romans, and remains recognizable to most contemporary viewers.',
-    image: require('../assets/images/saam/pharaoh.jpg')
-  },
-  {
-    name: 'Wonam (Wedding Robe)',
-    artist: '',
-    year: 'Late 19th century',
-    era: 'Pre-modern Korea',
-    country: 'Korea',
-    medium: 'Silk gauze and silk plain weave: patched and stitched',
-    style: 'Korean',
-    time: 234,
-    description: 'The commoner class of Korea traditionally wore white clothing, reserving red and other colors for the upper class and for special occasions. When worn by ordinary people on their wedding day, the wonsam robe had multicolored sleeves with horizontal bands of red, yellow, blue, pink, green, red and white. A long ribbon of silk worn just below the breast line further embellished the robe. Many Korean brides today still wear the wonsam in traditional wedding ceremonies.',
-    image: require('../assets/images/saam/wonam.jpg')
-  },
-  {
     name: 'Some/One',
     artist: 'Do Ho Suh',
     year: 2001,
