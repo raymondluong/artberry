@@ -85,6 +85,69 @@ let metArtwork = [
   },
 ];
 
+let cantorArtwork = [
+  {
+    name: 'New York Corner',
+    artist: 'Edward Hopper',
+    year: 1913,
+    era: 'Modern America',
+    country: 'United States',
+    medium: 'Oil on canvas',
+    style: 'Realism',
+    time: 258,
+    description: 'The Cantor Arts Center welcomes a major acquisition, Edward Hopper’s seminal painting New York Corner, created when the artist was 31 and considered the first work made in his representational style. Hopper is one of the most acclaimed and influential artists of the 20th-century. His powerful and iconic seascapes, cityscapes, and depictions of solitary figures in urban interiors expose the rugged individualism of American culture in all its beauty and isolation.',
+    image: require('../assets/images/cantor/newyorkcorner.jpg')
+  },
+  {
+    name: 'Death of the Prince de Talmont',
+    artist: 'Fleury-Francois Richard',
+    year: 1823,
+    era: 'Romantic period',
+    country: 'France',
+    medium: 'Oil on canvas',
+    style: 'Neoclassicism',
+    time: 287,
+    description: 'The painting depicts the death of Charles de la Trémoille, Prince of Talmont and Mortagne after the battle of Marignano in 1515. The scene is a fictional account of the event, the setting being the Saint Martin d’Ainay, the oldest surviving church in Lyons.',
+    image: require('../assets/images/cantor/death.jpg')
+  },
+  {
+    name: 'Silent',
+    artist: 'Hans Arp',
+    year: 1949,
+    era: 'Modern France',
+    country: 'France',
+    medium: 'Marble and stainless steel',
+    style: 'Surrealism',
+    time: 132,
+    description: 'Arp was a founding member of the Dada movement in Zürich in 1916. In 1920, as Hans Arp, along with Max Ernst and the social activist Alfred Grünwald, he set up the Cologne Dada group. However, in 1925, his work also appeared in the first exhibition of the surrealist group at the Galérie Pierre in Paris.',
+    image: require('../assets/images/cantor/silent.jpg')
+  },
+  {
+    name: 'Portrait of Leland Stanford Jr.',
+    artist: 'Astley D. M. Cooper',
+    year: 1890,
+    era: 'Modern America',
+    country: 'United States',
+    medium: 'Oil on canvas',
+    style: 'Portrait',
+    time: 10,
+    description: 'Leland Stanford Jr. was the only child of Governor Leland Stanford of California and his wife Jane Stanford née Lathrop.',
+    image: require('../assets/images/cantor/stanford.jpg')
+  },
+  {
+    name: 'Civil War',
+    artist: 'Edouard Manet',
+    year: 1871,
+    era: 'Modern France',
+    country: 'France',
+    medium: 'Lithograph',
+    style: 'Realism',
+    time: 203,
+    description: 'It depicts a corpse of a Communard killed during the civil war between the Versailles government troops and the Paris Commune in 1871. The corpse is left uncared for beside a barricade.',
+    image: require('../assets/images/cantor/civilwar.jpg')
+  },
+];
+
 let vanGoghArtwork = [
   {
     name: 'Almond Blossoms',
@@ -186,6 +249,132 @@ let vanGoghArtwork = [
   }
 ];
 
+let momaArtwork = [
+  {
+    name: 'The Persistence of Memory',
+    artist: 'Salvador Dali',
+    year: 1931,
+    era: 'Modern America',
+    country: 'United States',
+    medium: 'Oil on canvas',
+    style: 'Surrealism',
+    time: 405,
+    description: 'The well-known piece introduced the image of the soft melting pocket watch. It epitomizes Dalí\'s theory of "softness" and "hardness", which was central to his thinking at the time. As Dawn Ades wrote, "The soft watches are an unconscious symbol of the relativity of space and time, a Surrealist meditation on the collapse of our notions of a fixed cosmic order". This interpretation suggests that Dalí was incorporating an understanding of the world introduced by Albert Einstein\'s theory of special relativity. Asked by Ilya Prigogine whether this was in fact the case, Dalí replied that the soft watches were not inspired by the theory of relativity, but by the surrealist perception of a Camembert melting in the sun.',
+    image: require('../assets/images/moma/dali.jpg')
+  },
+  {
+    name: 'Les Demoiselles d\'Avignon',
+    artist: 'Pablo Picasso',
+    year: 1907,
+    era: 'Modern France',
+    country: 'France',
+    medium: 'Oil on canvas',
+    style: 'Cubism',
+    time: 450,
+    description: 'Les Demoiselles d\'Avignon (The Young Ladies of Avignon, and originally titled The Brothel of Avignon) is a large oil painting created in 1907 by the Spanish artist Pablo Picasso (1881–1973). The work portrays five nude female prostitutes from a brothel on Carrer d\'Avinyó (Avinyó Street) in Barcelona. Each figure is depicted in a disconcerting confrontational manner and none are conventionally feminine. The women appear as slightly menacing and rendered with angular and disjointed body shapes. Three figures on the left exhibit facial features in the Iberian style of Picasso\'s native Spain, while the two on the right are shown with African mask-like features. The racial primitivism evoked in these masks, according to Picasso, moved him to "liberate an utterly original artistic style of compelling, even savage force."',
+    image: require('../assets/images/moma/avignon.jpg')
+  },
+  {
+    name: 'The Lovers',
+    artist: 'Rene Magritte',
+    year: 1928,
+    era: 'Modern France',
+    country: 'France',
+    medium: 'Oil on canvas',
+    style: 'Surrealism',
+    time: 56,
+    description: 'Frustrated desires are a common theme in René Magritte’s work. Here, a barrier of fabric prevents the intimate embrace between two lovers, transforming an act of passion into one of isolation and frustration. Some have interpreted this work as a depiction of the inability to fully unveil the true nature of even our most intimate companions.',
+    image: require('../assets/images/moma/lovers.jpg')
+  },
+  {
+    name: 'The Starry Night',
+    artist: 'Vincent van Gogh',
+    year: 1889,
+    era: 'Modern France',
+    country: 'France',
+    medium: 'Oil on canvas',
+    style: 'Post-impressionism',
+    time: 503,
+    description: 'Mention Vincent van Gogh (Dutch, 1853–1890) and one of the first things likely to come to many people’s minds is the fact that he cut off his own ear. This stark act, committed in 1888, marked the beginning of the depression that would plague him until the end of his life. But to know van Gogh is to get past the caricature of the tortured, misunderstood artist and to become acquainted instead with the hardworking, deeply religious, and difficult man. Van Gogh found his place in art and produced emotional, visually arresting paintings over the course of a career that lasted only a decade.',
+    image: require('../assets/images/moma/starrynight.jpg')
+  },
+  {
+    name: 'Broadway Boogie-Woogie',
+    artist: 'Piet Mondrian',
+    year: 1943,
+    era: 'Modern America',
+    country: 'United States',
+    medium: 'Oil on canvas',
+    style: 'Abstract art',
+    time: 164,
+    description: 'Mondrian, who had escaped to New York from Europe after the outbreak of World War II, delighted in the city\'s architecture. He was also fascinated by American jazz, particularly boogie-woogie, finding its syncopated beat, irreverent approach to melody, and improvisational aesthetic akin to what he called, in his own work, the "destruction of natural appearance; and construction through continuous opposition of pure means—dynamic rhythm." In this painting, his penultimate, Mondrian replaced the black grid that had long governed his canvases with predominantly yellow lines that intersect at points marked by squares of blue and red. These atomized bands of stuttering chromatic pulses, interrupted by light gray, create paths across the canvas suggesting the city\'s grid, the movement of traffic, and blinking electric lights, as well as the rhythms of jazz.',
+    image: require('../assets/images/moma/broadway.jpg')
+  },
+];
+
+let saamArtwork = [
+  {
+    name: 'Head from a Statue of Pharaoh Thutmosis III',
+    artist: '',
+    year: 'Mid-15th Century B.C.',
+    era: 'Ancient Egypt',
+    country: 'Egypt',
+    medium: 'Basalt',
+    style: 'Egyptian',
+    time: 98,
+    description: 'One of the most extraordinary aspects of Egyptian art is the consistent portrayal of the human form. Developed around the year 2900 BC, during the Predynastic period, this style of portraying the human form remained consistent for 3000 years, through the time of the Romans, and remains recognizable to most contemporary viewers.',
+    image: require('../assets/images/saam/pharaoh.jpg')
+  },
+  {
+    name: 'Wonam (Wedding Robe)',
+    artist: '',
+    year: 'Late 19th century',
+    era: 'Pre-modern Korea',
+    country: 'Korea',
+    medium: 'Silk gauze and silk plain weave: patched and stitched',
+    style: 'Korean',
+    time: 234,
+    description: 'The commoner class of Korea traditionally wore white clothing, reserving red and other colors for the upper class and for special occasions. When worn by ordinary people on their wedding day, the wonsam robe had multicolored sleeves with horizontal bands of red, yellow, blue, pink, green, red and white. A long ribbon of silk worn just below the breast line further embellished the robe. Many Korean brides today still wear the wonsam in traditional wedding ceremonies.',
+    image: require('../assets/images/saam/wonam.jpg')
+  },
+  {
+    name: 'Some/One',
+    artist: 'Do Ho Suh',
+    year: 2001,
+    era: 'Contemporary',
+    country: 'United States',
+    medium: 'Stainless steel',
+    style: 'Abstract art',
+    time: 349,
+    description: 'Some/One, 2001, represents artist Do Ho Suh\'s interest in individual and collective identity. In the tradition of minimalist sculpture (works by artists such as Donald Judd, Dan Flavin and Carl André) Do Ho Suh\'s work explores how installation and sculpture pieces transform public and private spaces. His works are rich in content and aesthetics. Unlike some minimalist sculptures, they contain a painstaking amount of intricate detail that is not always apparent at first sight but is an integral part of the artwork. Some/One, as the title of the work indicates, juxtaposes the collective—represented by a larger-than-life armor sculpture—and the individual, consisting of life-size shiny-metal dog tags, each unique and representing a single soldier. This allegory is carried forward by contrasting the hard, insensitive character of armor with the delicate aspect of the dog tags, which are made up of thin sheets of metal and embody the poetic symbolism of fallen warriors.',
+    image: require('../assets/images/saam/some.jpg')
+  },
+  {
+    name: 'Mount Rainier, Bay of Tacoma - Puget Sound',
+    artist: 'Sanford Robinson Gifford',
+    year: 1875,
+    era: 'Modern America',
+    country: 'United States',
+    medium: 'Oil on canvas',
+    style: 'Landscape',
+    time: 103,
+    description: 'In the summer of 1874, Gifford set out by himself for Oregon and Alaska. Returning from the far north, Gifford traveled the length of Puget Sound and was able to see the great domes of the Cascades. The appearance of the ethereal-seeming, majestic Mount Rainier on an August afternoon clearly enchanted him. He thrilled to the particular spirit of this place of grand volcanic peaks and ancient peoples, where, at times, when the skies clear and Rainier emerges out of the mist, we are granted the privilege of glimpsing what seems the heavenly home of the gods.',
+    image: require('../assets/images/saam/tacoma.jpg')
+  },
+  {
+    name: 'A Celebration',
+    artist: 'Georgia O\'Keefe',
+    year: 1924,
+    era: 'Modern America',
+    country: 'United States',
+    medium: 'Oil on canvas',
+    style: 'Surrealism',
+    time: 203,
+    description: 'Whatever the visual sources for A Celebration, they elicited an expression of what can only be described as pure elation. Perhaps the painting was inspired by the photographic cloud studies of Alfred Stieglitz, photographer and gallery director, with whom O\'Keeffe had been sharing her life since the summer of 1918. In memorable times together at Stieglitz\'s country place at Lake George, in upstate New York, they gazed at the skies and contemplated the clouds. Possibly the painting refers to their marriage, which finally took place in December 1924, just months after Stieglitz\'s divorce was granted that September.',
+    image: require('../assets/images/saam/celebration.jpg')
+  },
+];
+
 let museums = [
   {
     name: 'Metropolitan Museum of Art',
@@ -199,21 +388,21 @@ let museums = [
     date: 'November 29, 2016',
     location: 'Stanford, CA',
     image: require(`../assets/images/cantor.jpg`),
-    artwork: []
+    artwork: cantorArtwork
   },
   {
     name: 'Museum of Modern Art',
     date: 'November 24, 2016',
     location: 'New York, NY',
     image: require(`../assets/images/moma.jpg`),
-    artwork: []
+    artwork: momaArtwork
   },
   {
     name: 'Seattle Asian Art Museum',
     date: 'November 10, 2016',
     location: 'Seattle, WA',
     image: require(`../assets/images/saam.jpg`),
-    artwork: []
+    artwork: saamArtwork
   }
 ];
 
