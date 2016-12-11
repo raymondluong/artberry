@@ -264,7 +264,8 @@ const styles = StyleSheet.create({
   },
   resumeButtonContainer: {
     marginTop: 15,
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 10
   },
   modalTitle: {
     fontSize: 20,
