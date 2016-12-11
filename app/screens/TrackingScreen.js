@@ -295,7 +295,7 @@ const styles = StyleSheet.create({
   },
   finishJourneyButtonContainer: {
     position: 'absolute',
-    bottom: 0,
+    bottom: 10,
     width: screenWidth,
     alignItems: 'center'
   },
@@ -312,7 +312,7 @@ const styles = StyleSheet.create({
   },
   pauseJourneyButtonContainer: {
     position: 'absolute',
-    bottom: 55,
+    bottom: 65,
     width: screenWidth,
     alignItems: 'center'
   },
