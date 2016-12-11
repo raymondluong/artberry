@@ -2,12 +2,12 @@
 
 Trips to the museum are often isolated experiences – visitors forget the artwork they viewed, cultural context they learned, and emotions they felt after leaving the museum.
 
-Artberry is a museum scrapbook that helps visitors effortlessly record their moments in the museum, re-experience their visit after leaving, and learn more about their art taste over time.
+Artberry is a museum scrapbook prototype that helps visitors effortlessly record their moments in the museum, re-experience their visit after leaving, and learn more about their art taste over time.
 
 Our app was developed with React Native and Exponent for the CS147 Human-Computer Interaction Design course at Stanford University.
 
 ## Mobile Installation Instructions:
-1. Download the Exponent app for your device
+1. Download the Exponent app for your device ([iOS](https://itunes.com/apps/exponent) or [Android](https://play.google.com/store/apps/details?id=host.exp.exponent))
 2. Open https://exp.host/@raymond/app in any browser. It will prompt you to open the Exponent app.
 
 ## Teammates:
